@@ -1,13 +1,6 @@
 # genius-financial-query-skill
 巨灵数据API SKILL
 
----
-name: "genius-financial-query"
-description: "查询金融数据 (股票、基金、期货、债券等)。Invoke when user asks for stock info, financial reports, market data, or queries any financial instruments using natural language."
-version: "3.1.0"
-author: "Genius Skill Team"
----
-
 # Genius Financial Query Skill
 
 ## 技能说明
