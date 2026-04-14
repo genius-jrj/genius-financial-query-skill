@@ -1,6 +1,3 @@
-# genius-financial-query-skill
-巨灵数据API SKILL
-
 # Genius Financial Query Skill
 
 ## 技能说明
