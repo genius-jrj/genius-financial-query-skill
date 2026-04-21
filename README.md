@@ -41,7 +41,7 @@ genius-financial-query/
 ```
 
 **获取 Token 步骤**：
-1. 访问 http://science.z3cloud.com.cn
+1. 访问 http://science.z3cloud.com.cn/api-genius
 2. 注册账号并登录
 3. 进入个人中心创建 API Token
 4. 复制 Token 并配置
