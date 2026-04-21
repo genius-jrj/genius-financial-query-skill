@@ -1,9 +1,3 @@
----
-name: genius-financial-query
-description: 查询金融数据 (股票、基金、期货、债券等)。支持 126 个接口，共 2017 个字段，提供字段名自动映射。支持排序字段检测和时间范围查询（SD_ 和 ED_ 前缀）。
-metadata: {"openclaw": {"requires": {"bins": ["python3"]}, "primaryEnv": "GENIUS_API_TOKEN"}}
----
-
 # Genius Financial Query Skill
 
 ## 技能说明
