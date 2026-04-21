@@ -38,7 +38,7 @@ class FinancialDataHandler:
         
         self.field_mapping = self._load_field_mapping()
     
-    def _load_field_mapping(self) -&gt; Dict[str, Any]:
+    def _load_field_mapping(self) -> Dict[str, Any]:
         """加载字段映射文件"""
         try:
             current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -59,7 +59,7 @@ class FinancialDataHandler:
                 fields: Optional[str] = None, 
                 sort: Optional[str] = None,
                 pageNum: int = 1, 
-                pageSize: int = 1000) -&gt; Dict[str, Any]:
+                pageSize: int = 1000) -> Dict[str, Any]:
         """
         执行 API 查询（主入口）
         
@@ -68,6 +68,7 @@ class FinancialDataHandler:
             params: 查询参数（如 {"SEC_CODE": "600519"}）
             fields: 返回字段（如 "SEC_CODE,SEC_SNAME"）
             sort: 排序（如 "LIST_DATE,DESC"）
+            mode: 返回模式, 1-数组格式返回，2-键值对格式返回，默认1
             pageNum: 页码
             pageSize: 每页条数
             
@@ -127,7 +128,7 @@ class FinancialDataHandler:
                 'data': None
             }
     
-    def _send_request(self, body: Dict[str, Any]) -&gt; Dict[str, Any]:
+    def _send_request(self, body: Dict[str, Any]) -> Dict[str, Any]:
         """发送 HTTP 请求"""
         headers = {
             'Authorization': f'Bearer {self.api_token}',
@@ -150,7 +151,7 @@ class FinancialDataHandler:
         
         return result
     
-    def _map_fields(self, data: Dict[str, Any], apiName: str) -&gt; Dict[str, Any]:
+    def _map_fields(self, data: Dict[str, Any], apiName: str) -> Dict[str, Any]:
         """
         字段映射：将 API 返回的字段映射为中文
         
@@ -173,7 +174,7 @@ class FinancialDataHandler:
             mapped_item = {}
             for i, field in enumerate(fields):
                 field_name = field_name_map.get(field, field)
-                mapped_item[field_name] = item[i] if i &lt; len(item) else None
+                mapped_item[field_name] = item[i] if i < len(item) else None
             mapped_items.append(mapped_item)
         
         return {
@@ -185,7 +186,7 @@ class FinancialDataHandler:
             'size': data.get('size', 0)
         }
     
-    def _get_field_name_map(self, apiName: str) -&gt; Dict[str, str]:
+    def _get_field_name_map(self, apiName: str) -> Dict[str, str]:
         """获取接口的字段名映射"""
         field_map = {}
         interfaces = self.field_mapping.get('interfaces', {})
@@ -200,7 +201,7 @@ class FinancialDataHandler:
         
         return field_map
     
-    def get_interfaces(self) -&gt; List[Dict[str, Any]]:
+    def get_interfaces(self) -> List[Dict[str, Any]]:
         """获取所有接口列表"""
         result = []
         interfaces = self.field_mapping.get('interfaces', {})
@@ -216,13 +217,15 @@ class FinancialDataHandler:
                     'interfaceCode': interface_code,
                     'interfaceName': interface_data.get('name', ''),
                     'description': interface_data.get('description', ''),
+                    'inputParamCount': len(interface_data.get('inputParams', [])),
                     'fieldCount': len(interface_data.get('fields', [])),
+                    'inputParams': interface_data.get('inputParams', []),
                     'fields': interface_data.get('fields', [])
                 })
         
         return result
     
-    def get_interface(self, interfaceCode: str) -&gt; Optional[Dict[str, Any]]:
+    def get_interface(self, interfaceCode: str) -> Optional[Dict[str, Any]]:
         """获取单个接口的详细信息"""
         interfaces = self.field_mapping.get('interfaces', {})
         
@@ -236,13 +239,130 @@ class FinancialDataHandler:
                     'interfaceCode': interfaceCode,
                     'interfaceName': interface_data.get('name', ''),
                     'description': interface_data.get('description', ''),
+                    'inputParamCount': len(interface_data.get('inputParams', [])),
                     'fieldCount': len(interface_data.get('fields', [])),
+                    'inputParams': interface_data.get('inputParams', []),
                     'fields': interface_data.get('fields', [])
                 }
         
         return None
     
-    def get_sortable_fields(self, interfaceCode: str) -&gt; List[str]:
+    def get_category_name(self, categoryCode: str) -> str:
+        """
+        获取分类的中文名称
+        
+        Args:
+            categoryCode: 分类编码（如 jcsj）
+            
+        Returns:
+            分类中文名称
+        """
+        interfaces = self.field_mapping.get('interfaces', {})
+        if categoryCode in interfaces:
+            return interfaces[categoryCode].get('categoryName', categoryCode)
+        
+        return categoryCode
+    
+    def get_category_parent(self, categoryCode: str) -> Optional[str]:
+        """
+        获取分类的父分类编码
+        
+        Args:
+            categoryCode: 分类编码（如 jcsj）
+            
+        Returns:
+            父分类编码，如果是一级分类则返回 None
+        """
+        interfaces = self.field_mapping.get('interfaces', {})
+        if categoryCode in interfaces:
+            return interfaces[categoryCode].get('parentCategory')
+        
+        return None
+    
+    def get_category_hierarchy(self, categoryCode: str) -> List[str]:
+        """
+        获取分类的完整层级路径
+        
+        Args:
+            categoryCode: 分类编码（如 jcsj）
+            
+        Returns:
+            从一级分类到当前分类的路径列表，如 ['gpsj', 'jcsj']
+        """
+        path = []
+        current = categoryCode
+        
+        while current:
+            path.insert(0, current)
+            current = self.get_category_parent(current)
+        
+        return path
+    
+    def get_category_full_path(self, categoryCode: str) -> str:
+        """
+        获取分类的完整中文路径
+        
+        Args:
+            categoryCode: 分类编码（如 jcsj）
+            
+        Returns:
+            完整中文路径，如 "股票数据 > 基础数据"
+        """
+        hierarchy = self.get_category_hierarchy(categoryCode)
+        names = [self.get_category_name(code) for code in hierarchy]
+        return ' > '.join(names)
+    
+    def get_categories_by_parent(self, parentCode: Optional[str] = None) -> List[Dict[str, str]]:
+        """
+        获取指定父分类下的所有子分类
+        
+        Args:
+            parentCode: 父分类编码，如果为 None 则获取所有一级分类
+            
+        Returns:
+            子分类列表，包含 code 和 name
+        """
+        result = []
+        interfaces = self.field_mapping.get('interfaces', {})
+        
+        for code, data in interfaces.items():
+            if data.get('parentCategory') == parentCode:
+                result.append({
+                    'code': code,
+                    'name': data.get('categoryName', code)
+                })
+        
+        return result
+    
+    def get_input_params(self, interfaceCode: str) -> List[Dict[str, Any]]:
+        """
+        获取接口的输入参数列表
+        
+        Args:
+            interfaceCode: 接口代码
+            
+        Returns:
+            输入参数列表
+        """
+        interface = self.get_interface(interfaceCode)
+        if interface:
+            return interface.get('inputParams', [])
+        return []
+    
+    def get_required_input_params(self, interfaceCode: str) -> List[Dict[str, Any]]:
+        """
+        获取接口的必填输入参数
+        
+        Args:
+            interfaceCode: 接口代码
+            
+        Returns:
+            必填输入参数列表
+        """
+        input_params = self.get_input_params(interfaceCode)
+        return [param for param in input_params if param.get('required') == '是']
+    
+    def get_sortable_fields(self, interfaceCode: str) -> List[str]:
         """
         获取接口支持排序的字段列表
         
@@ -263,7 +383,7 @@ class FinancialDataHandler:
         
         return sortable_fields
     
-    def is_field_sortable(self, interfaceCode: str, fieldCode: str) -&gt; bool:
+    def is_field_sortable(self, interfaceCode: str, fieldCode: str) -> bool:
         """
         检查字段是否支持排序
         
@@ -276,7 +396,7 @@ class FinancialDataHandler:
         """
         return fieldCode in self.get_sortable_fields(interfaceCode)
     
-    def get_time_range_fields(self, interfaceCode: str) -&gt; List[str]:
+    def get_time_range_fields(self, interfaceCode: str) -> List[str]:
         """
         获取接口可能用于时间范围查询的字段
         
@@ -292,14 +412,13 @@ class FinancialDataHandler:
         if interface:
             for field in interface.get('fields', []):
                 field_code = field['code']
-                # 检查字段名称或代码是否包含日期相关关键词
                 if any(kw in field_code.lower() for kw in ['date', 'time', 'day', 'rpt', 'trade']):
                     time_fields.append(field_code)
         
         return time_fields
     
     def build_time_range_params(self, fieldCode: str, startDate: Optional[str] = None, 
-                                 endDate: Optional[str] = None) -&gt; Dict[str, str]:
+                                 endDate: Optional[str] = None) -> Dict[str, str]:
         """
         构建时间范围查询参数
         
@@ -322,6 +441,6 @@ class FinancialDataHandler:
         return params
 
 
-def create_handler(config: Dict[str, Any]) -&gt; FinancialDataHandler:
+def create_handler(config: Dict[str, Any]) -> FinancialDataHandler:
     """创建处理器实例"""
     return FinancialDataHandler(config)
