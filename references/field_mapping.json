@@ -199,9 +199,9 @@
       "parent": null
     }
   },
-  "totalInterfaces": 233,
-  "totalInputParams": 1012,
-  "totalOutputFields": 3768,
+  "totalInterfaces": 235,
+  "totalInputParams": 1019,
+  "totalOutputFields": 3795,
   "interfaces": {
     "cne5": {
       "categoryName": "Barra风险模型（CNE5）",
@@ -6173,6 +6173,70 @@
     "llsj": {
       "categoryName": "利率数据",
       "interfaces": {
+        "mac_ncd_yield": {
+          "name": "同业存单收益率",
+          "description": "获取同业存单一年期的到期/即期收益率数据",
+          "inputParams": [
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMMDD）"
+            },
+            {
+              "code": "YIELD_CURY_TYPE",
+              "name": "收益率类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "可选，1-到期；2-即期；不传返回全部 (精度：10)"
+            },
+            {
+              "code": "SD_TRADEDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMMDD）-取TRADEDATE"
+            },
+            {
+              "code": "ED_TRADEDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMMDD）-取TRADEDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYYMMDD）"
+            },
+            {
+              "code": "YIELD_CURY_TYPE",
+              "name": "收益率类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-到期；2-即期 (精度：10)"
+            },
+            {
+              "code": "MATURITY",
+              "name": "标准期限",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "标准期限 [单位：年] (精度：12,4)"
+            },
+            {
+              "code": "YIELD",
+              "name": "收益率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "支持排序； [单位：%] (精度：18,6)"
+            }
+          ]
+        },
         "mac_shibor": {
           "name": "Shibor利率",
           "description": "获取每个交易日上海银行同业拆借市场本币拆借的盘后行情",
@@ -23600,6 +23664,196 @@
     "rdzb": {
       "categoryName": "热度指标",
       "interfaces": {
+        "hk_list_hear": {
+          "name": "港股排队ipo",
+          "description": "获取港股的聆讯信息",
+          "inputParams": [
+            {
+              "code": "DECLAREDATE",
+              "name": "最新公告日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；取DECLAREDATE字段"
+            }
+          ],
+          "fields": [
+            {
+              "code": "CNAME",
+              "name": "公司中文名",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公司中文名 (精度：200)"
+            },
+            {
+              "code": "STKABB",
+              "name": "证券简称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "证券简称 (精度：100)"
+            },
+            {
+              "code": "FIR_HEAR_DATE",
+              "name": "首次聆讯公告日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "最新公告日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "FIR_ADT_DATE",
+              "name": "首次聆讯通过日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "REG_STATUS",
+              "name": "申请状态",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "36-已上市;37-被拒绝;38-撤回;39-失效;40-被发回;41-已刊登申请版本;42-已刊登聆讯后资料集 (精度：50)"
+            },
+            {
+              "code": "LIST_SEC",
+              "name": "拟上市板块",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-主板;6-创业板 (精度：50)"
+            },
+            {
+              "code": "SPONSOR",
+              "name": "保荐机构",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "保荐机构 (精度：500)"
+            },
+            {
+              "code": "GCOORDINATOR",
+              "name": "全球协调人",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "全球协调人 (精度：500)"
+            },
+            {
+              "code": "ENAME",
+              "name": "公司英文名",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公司英文名 (精度：200)"
+            },
+            {
+              "code": "INCDATE",
+              "name": "成立日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "YEAREND_DATE",
+              "name": "年结日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "年结日 (精度：50)"
+            },
+            {
+              "code": "REG_ADDR",
+              "name": "注册地址",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "注册地址 (精度：500)"
+            },
+            {
+              "code": "OFFICE_ADDR",
+              "name": "办公地址",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "办公地址 (精度：500)"
+            },
+            {
+              "code": "COMWEBADS",
+              "name": "机构网站",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "机构网站 (精度：500)"
+            },
+            {
+              "code": "EMAIL",
+              "name": "电子邮箱",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "电子邮箱 (精度：500)"
+            },
+            {
+              "code": "TEL",
+              "name": "公司电话",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公司电话 (精度：100)"
+            },
+            {
+              "code": "FAX",
+              "name": "公司传真",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公司传真 (精度：100)"
+            },
+            {
+              "code": "NUMTEMP",
+              "name": "职工人数",
+              "type": "INT",
+              "required": "否",
+              "description": "职工人数"
+            },
+            {
+              "code": "SCOPE_BUSS",
+              "name": "经营范围",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "经营范围 (精度：MAX)"
+            },
+            {
+              "code": "COMINTR",
+              "name": "公司简介",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公司简介 (精度：MAX)"
+            },
+            {
+              "code": "INDU_NAME_HK",
+              "name": "所属港交所行业(二级)",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "所属港交所行业(二级) (精度：50)"
+            },
+            {
+              "code": "INDU_NAME_GICS",
+              "name": "所属GICS行业(二级)",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "所属GICS行业(二级) (精度：50)"
+            }
+          ]
+        },
         "hsahp": {
           "name": "AH溢价指数",
           "description": "获取恒生沪深港通AH股溢价指数的日行情数据",
