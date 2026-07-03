@@ -1,6 +1,6 @@
 {
   "version": "4.0.0",
-  "updateTime": "2026-06-03",
+  "updateTime": "2026-07-03",
   "description": "金融数据接口字段映射表，包含所有接口的完整字段信息",
   "categoryMapping": {
     "gpsj": "股票数据"
@@ -197,11 +197,27 @@
     "hjzb": {
       "name": "黄金指标",
       "parent": null
+    },
+    "scgz": {
+      "name": "市场估值",
+      "parent": null
+    },
+    "jgfx": {
+      "name": "机构分析",
+      "parent": null
+    },
+    "etffx": {
+      "name": "ETF分析",
+      "parent": null
+    },
+    "hgtj": {
+      "name": "宏观统计",
+      "parent": null
     }
   },
-  "totalInterfaces": 235,
-  "totalInputParams": 1019,
-  "totalOutputFields": 3795,
+  "totalInterfaces": 251,
+  "totalInputParams": 1067,
+  "totalOutputFields": 3904,
   "interfaces": {
     "cne5": {
       "categoryName": "Barra风险模型（CNE5）",
@@ -7032,6 +7048,148 @@
               "description": "支持排序；格式（YYYY-MM-dd）；交易日期+操作天数"
             }
           ]
+        },
+        "bnd_inner_ibor": {
+          "name": "国内银行间同业拆借利率",
+          "description": "获取上海银行同业拆借市场和中国银行同业拆借市场的盘后行情",
+          "inputParams": [
+            {
+              "code": "OFFERED_MKT",
+              "name": "拆借市场",
+              "type": "INT",
+              "required": "否",
+              "description": "1-上海银行同业拆借市场；6-中国银行同业拆借市场"
+            },
+            {
+              "code": "OFFERED_MATU",
+              "name": "拆借期限",
+              "type": "INT",
+              "required": "否",
+              "description": "隔夜；1周；2周；3周；1个月；2个月；3个月；4个月；5个月；6个月；7个月；9个月；12个月或1年"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_TRADEDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
+            },
+            {
+              "code": "ED_TRADEDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "OFFERED_MKT",
+              "name": "拆借市场",
+              "type": "INT",
+              "required": "否",
+              "description": "1-上海银行同业拆借市场；6-中国银行同业拆借市场"
+            },
+            {
+              "code": "OFFERED_CURNCY",
+              "name": "拆借货币",
+              "type": "INT",
+              "required": "否",
+              "description": "1-人民币"
+            },
+            {
+              "code": "OFFERED_MATU",
+              "name": "拆借期限",
+              "type": "INT",
+              "required": "否",
+              "description": "隔夜；1周；2周；3周；1个月；2个月；3个月；4个月；5个月；6个月；7个月；9个月；12个月或1年"
+            },
+            {
+              "code": "OFFERED_INTR",
+              "name": "拆借利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "拆借利率 [单位：%] (精度：9,4)"
+            }
+          ]
+        },
+        "bnd_trsy_yield": {
+          "name": "中国国债收益率",
+          "description": "获取中国国债收益率日行情数据",
+          "inputParams": [
+            {
+              "code": "RPT_PERIOD",
+              "name": "统计期间",
+              "type": "INT",
+              "required": "否",
+              "description": "一年；两年；三年；五年；七年；十年；十五年；二十年；三十年"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_TRADEDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
+            },
+            {
+              "code": "ED_TRADEDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "NATION_NAME",
+              "name": "国家(地区)参数",
+              "type": "INT",
+              "required": "否",
+              "description": "231-中国"
+            },
+            {
+              "code": "RPT_PERIOD",
+              "name": "统计期间",
+              "type": "INT",
+              "required": "否",
+              "description": "一年；两年；三年；五年；七年；十年；十五年；二十年；三十年"
+            },
+            {
+              "code": "YIELD",
+              "name": "收益",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "收益 [单位：%] (精度：12,4)"
+            }
+          ]
         }
       }
     },
@@ -7238,6 +7396,82 @@
         }
       },
       "parentCategory": "gwhg"
+    },
+    "scgz": {
+      "categoryName": "市场估值",
+      "interfaces": {
+        "market_valuation_distribution": {
+          "name": "全市场PE/PB/市值分布",
+          "description": "用于展示A股市场在不同市值分层（如小市值、中小盘、大盘等）上的估值结构分布变化，指标包括PE、PB及市值区间占比。通过观察各分层占比的历史变化，可以快速判断市场风格切换与资金偏好迁移情况。该图表适用于跟踪市场结构性行情与风险偏好变化。",
+          "inputParams": [
+            {
+              "code": "indicator",
+              "name": "指标",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "PE-市盈率；PB-市净率；TCAP-总市值"
+            },
+            {
+              "code": "market",
+              "name": "市场",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "A-A股；B-B股；H-港股"
+            },
+            {
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "end_date",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "stat",
+              "name": "统计方式",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "prop-按比例统计；number-按数量统计"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "PE市盈率指标区间包含：负值、大于50、25-50、15-25、10-15、5-10；PB市净率指标区间包含：负值、大于5、3-5、1.5-3、1-1.5、0.5-1、小于0.5；TCAP总市值指标区间包含：大于千亿、三百亿到千亿、百亿到三百亿、三十亿到百亿、十亿到三十亿、一亿到十亿、小于一亿；"
+            },
+            {
+              "code": "value",
+              "name": "指标数值",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "指标数值"
+            }
+          ]
+        }
+      }
     },
     "zsjcsj": {
       "categoryName": "基础数据",
@@ -10092,28 +10326,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10122,14 +10356,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10156,28 +10390,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
@@ -10193,14 +10427,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10241,28 +10475,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
@@ -10278,14 +10512,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10312,28 +10546,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10342,14 +10576,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10369,28 +10603,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10399,14 +10633,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10461,28 +10695,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10491,14 +10725,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10525,28 +10759,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10555,14 +10789,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10589,28 +10823,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
@@ -10626,14 +10860,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10674,14 +10908,14 @@
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）；取RPT_YEAR字段"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "结束日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）；取RPT_YEAR字段"
             }
@@ -10860,28 +11094,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
@@ -10897,14 +11131,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -10945,28 +11179,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -10975,14 +11209,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -11045,63 +11279,6 @@
             }
           ]
         },
-        "mac_cci": {
-          "name": "消费者信心指数",
-          "description": "获取消费者信心指数月度数据",
-          "inputParams": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "统计月度"
-            },
-            {
-              "code": "SD_RPT_YEAR",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            },
-            {
-              "code": "ED_RPT_YEAR",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            }
-          ],
-          "fields": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "CCI",
-              "name": "消费者信心指数",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "消费者信心指数 (精度：6,2)"
-            }
-          ]
-        },
         "mac_retail_amt": {
           "name": "社会消费品零售总额",
           "description": "获取社会消费品零售总额月度数据",
@@ -11109,28 +11286,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
@@ -11146,14 +11323,14 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；"
             },
@@ -11177,6 +11354,63 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "社会消费品零售总额同比增长 [单位：%] (精度：18,4)"
+            }
+          ]
+        },
+        "mac_cci": {
+          "name": "消费者信心指数",
+          "description": "获取消费者信心指数月度数据",
+          "inputParams": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "SD_RPT_YEAR",
+              "name": "开始日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            },
+            {
+              "code": "ED_RPT_YEAR",
+              "name": "截止日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；"
+            },
+            {
+              "code": "CCI",
+              "name": "消费者信心指数",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "消费者信心指数 (精度：6,2)"
             }
           ]
         },
@@ -11348,6 +11582,777 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "收益 [单位：%] (精度：12,4)"
+            }
+          ]
+        },
+        "omo_china": {
+          "name": "OMO余额",
+          "description": "获取OMO 公开市场操作（7天逆回购）数据",
+          "inputParams": [
+            {
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            }
+          ],
+          "fields": [
+            {
+              "code": "date",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "maturity_date",
+              "name": "到期日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "bid_intr",
+              "name": "中标利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "中标利率 [单位：%]"
+            },
+            {
+              "code": "bid_num",
+              "name": "中标数量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "中标数量 [单位：亿]"
+            },
+            {
+              "code": "omo_omo_net_increase",
+              "name": "OMO净新增",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "OMO净新增 [单位：亿]"
+            },
+            {
+              "code": "omo_balance",
+              "name": "OMO余额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "OMO余额 [单位：亿]"
+            }
+          ]
+        },
+        "mac_dep_rmb_crdt": {
+          "name": "存款类金融机构人民币信贷收支",
+          "description": "获取存款类人民币信贷收支情况",
+          "inputParams": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "SD_RPT_YEAR",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            },
+            {
+              "code": "ED_RPT_YEAR",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；"
+            },
+            {
+              "code": "TOT_DEP",
+              "name": "各项存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "各项存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "DOM_DEP",
+              "name": "境内存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "境内存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_DEP",
+              "name": "住户存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "住户存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_CURR_DEP",
+              "name": "活期存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "活期存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_FIX_DEP",
+              "name": "定期及其他存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "定期及其他存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_ENTE_DEP",
+              "name": "非金融企业存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "非金融企业存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_CURR_DEP",
+              "name": "活期存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "活期存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_FIX_DEP",
+              "name": "定期及其他存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "定期及其他存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "GOVE_DEP",
+              "name": "政府存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "政府存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FIS_DEP",
+              "name": "财政性存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "财政性存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "GVMNT_ORG_DEP",
+              "name": "机关团体存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "机关团体存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_DEP_INST_DEP",
+              "name": "非存款类金融机构存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "非存款类金融机构存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "OFFS_DEP",
+              "name": "境外存款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "境外存款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FIN_BOND",
+              "name": "金融债券",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "金融债券 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "MNY_IN_CIRC",
+              "name": "流通中货币",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "流通中货币 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "DEBT_TO_INTNL_ORG",
+              "name": "对国际金融机构负债",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "对国际金融机构负债 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "OTH_DEP",
+              "name": "其他",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "其他 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FUND_SRC",
+              "name": "资金来源总计",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "资金来源总计 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "TOT_LOAN",
+              "name": "各项贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "各项贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "DOM_LOAN",
+              "name": "境内贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "境内贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_LOAN",
+              "name": "住户贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "住户贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_SHRT_LOAN",
+              "name": "短期贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "短期贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "SHRT_CONS_LOAN",
+              "name": "消费贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "消费贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "SHRT_MANA_LOAN",
+              "name": "经营贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "经营贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "HOUS_MEDM_LONG_LOAN",
+              "name": "中长期贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "中长期贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "MEDM_LONG_CONS_LOAN",
+              "name": "消费贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "消费贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "MEDM_LONG_MANA_LOAN",
+              "name": "经营贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "经营贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_ORGA_LOAN",
+              "name": "非金融企业及机关团体贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "非金融企业及机关团体贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_SHRT_LOAN",
+              "name": "短期贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "短期贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_FINA_MELO_LOAN",
+              "name": "中长期贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "中长期贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "BILL_FIN",
+              "name": "票据融资",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "票据融资 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FIN_LEA",
+              "name": "融资租赁",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "融资租赁 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "TOT_ADV",
+              "name": "各项垫款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "各项垫款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "NON_DEP_FINA_LOAN",
+              "name": "非存款类金融机构贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "非存款类金融机构贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "OFFS__LOAN",
+              "name": "境外贷款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "境外贷款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "BOND_INVE",
+              "name": "债券投资",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "债券投资 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "OTH_INVST",
+              "name": "股权及其他投资",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "股权及其他投资 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "GOLD_RESE",
+              "name": "黄金占款",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "黄金占款 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FORE_EXCH_TRAD",
+              "name": "外汇买卖",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "外汇买卖 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "ASST_TO_INTER_ORG",
+              "name": "在国际金融机构资产",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "在国际金融机构资产 [单位：亿元] (精度：12,4)"
+            },
+            {
+              "code": "FUND_USE_TOT",
+              "name": "资金运用总计",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "资金运用总计 [单位：亿元] (精度：12,4)"
+            }
+          ]
+        },
+        "mac_dev": {
+          "name": "房地产开发投资",
+          "description": "获取房地产开发投资月度指标数据",
+          "inputParams": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "SD_RPT_MONTH",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            },
+            {
+              "code": "ED_RPT_MONTH",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "RE_CUM",
+              "name": "房地产开发投资完成额_累计值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "房地产开发投资完成额_累计值 [单位：亿元] (精度：30,10)"
+            },
+            {
+              "code": "RE_YOY",
+              "name": "房地产开发投资完成额_比上年同期增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "房地产开发投资完成额_比上年同期增长 [单位：%] (精度：30,10)"
+            }
+          ]
+        },
+        "mac_fiscal": {
+          "name": "公共财政收支",
+          "description": "获取公共财政收支月度指标数据",
+          "inputParams": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "SD_RPT_MONTH",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            },
+            {
+              "code": "ED_RPT_MONTH",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "BUD_CUM",
+              "name": "国家财政预算合计_累计值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "国家财政预算合计_累计值 [单位：亿元] (精度：30,10)"
+            },
+            {
+              "code": "BUD_YOY",
+              "name": "国家财政预算合计_累计增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "国家财政预算合计_累计增长 [单位：%] (精度：30,10)"
+            },
+            {
+              "code": "EXP_CUM",
+              "name": "国家财政支出合计_累计值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "国家财政支出合计_累计值 [单位：亿元] (精度：30,10)"
+            },
+            {
+              "code": "EXP_YOY",
+              "name": "国家财政支出合计_累计增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "国家财政支出合计_累计增长 [单位：%] (精度：30,10)"
+            }
+          ]
+        },
+        "mac_fai": {
+          "name": "固定资产投资（不含农户）",
+          "description": "获取固定资产投资（不含农户）月度指标数据",
+          "inputParams": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "SD_RPT_MONTH",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            },
+            {
+              "code": "ED_RPT_MONTH",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM）-取RPT_MONTH"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYYMM），支持多个月份同时输入，逗号分隔"
+            },
+            {
+              "code": "WAT_YOY",
+              "name": "水利、环境和公共设施管理业_累计增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "水利、环境和公共设施管理业_累计增长 [单位：%] (精度：30,10)"
+            },
+            {
+              "code": "POW_YOY",
+              "name": "电力、热力、燃气及水的生产和供应业_累计增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "电力、热力、燃气及水的生产和供应业_累计增长 [单位：%] (精度：30,10)"
+            },
+            {
+              "code": "TRA_YOY",
+              "name": "交通运输、仓储和邮政业_累计增长",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "交通运输、仓储和邮政业_累计增长 [单位：%] (精度：30,10)"
+            }
+          ]
+        },
+        "mac_fx_resv": {
+          "name": "央行外汇储备",
+          "description": "获取央行外汇储备月度数据",
+          "inputParams": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "SD_RPT_YEAR",
+              "name": "开始日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            },
+            {
+              "code": "ED_RPT_YEAR",
+              "name": "截止日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "FOREX_RESV",
+              "name": "国家外汇储备",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "为累计数据 [单位：亿美元] (精度：10,4)"
+            }
+          ]
+        },
+        "mac_forex_quot": {
+          "name": "人民币外汇牌价",
+          "description": "获取人民币外汇牌价日行情数据",
+          "inputParams": [
+            {
+              "code": "MNY_CODE",
+              "name": "货币代码",
+              "type": "INT",
+              "required": "否",
+              "description": "2-港币；3-美元；4-日元；5-英镑；6-欧元"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "MNY_CODE",
+              "name": "货币代码",
+              "type": "INT",
+              "required": "否",
+              "description": "2-港币；3-美元；4-日元；5-英镑；6-欧元"
+            },
+            {
+              "code": "SPT_BUY",
+              "name": "现汇买入价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "指银行买入外币现汇、客户卖出外币现汇的价格，以100外币为基准 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "CASH_BUY",
+              "name": "现钞买入价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "指银行买入外币现钞、客户卖出外币现钞的价格，以100外币为基准 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "SALE",
+              "name": "卖出价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行将外币卖给客户的价格，以100外币为基准 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "BENCH",
+              "name": "基准价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间外汇市场交易货币对人民币汇率的中间价，以100外币为基准 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "TRANS",
+              "name": "折算价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "中行根据基准价及自身情况确定的外币中间价，以100外币为基准；中行折算价 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "MNY_NAME",
+              "name": "货币名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "货币名称 (精度：30)"
+            }
+          ]
+        },
+        "bnd_benchmark_intr": {
+          "name": "银行间回购定盘利率",
+          "description": "获取银行间回购定盘利率日行情数据",
+          "inputParams": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "FR001",
+              "name": "银行间隔夜回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间隔夜回购定盘利率 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "FR007",
+              "name": "银行间七天回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间七天回购定盘利率 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "FR014",
+              "name": "银行间十四天回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间十四天回购定盘利率 [单位：%] (精度：9,4)"
             }
           ]
         }
@@ -12590,6 +13595,82 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "币种：港币 (精度：100)"
+            }
+          ]
+        }
+      }
+    },
+    "jgfx": {
+      "categoryName": "机构分析",
+      "interfaces": {
+        "fund_index_performance": {
+          "name": "基金指数数据",
+          "description": "展示不同类型基金指数的价格走势及滚动收益表现，覆盖主动偏股型基金与债券/偏债型基金两大类别。通过对基金指数净值变化与滚动收益率的同步观察，可以用于评估不同风险资产在不同市场阶段的收益弹性与趋势持续性，并辅助进行大类资产配置与风格切换判断。",
+          "inputParams": [
+            {
+              "code": "window",
+              "name": "统计窗口",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "1-1年；2-2年；3-3年；5-5年"
+            },
+            {
+              "code": "indicator",
+              "name": "叠加统计指标",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "return-滚动收益率；drawdown-回撤比率"
+            },
+            {
+              "code": "underlying_type",
+              "name": "基金类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "debt-债券型与偏债型基金；stock-主动偏股型基金"
+            },
+            {
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "end_date",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "滚动收益率指标区间包含：指数价格、滚动收益率(%)；回撤比率指标区间包含：指数价格、指数回撤比率(%)"
+            },
+            {
+              "code": "value",
+              "name": "指标数值",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "指标数值"
             }
           ]
         }
@@ -20763,6 +21844,140 @@
         }
       }
     },
+    "etffx": {
+      "categoryName": "ETF分析",
+      "interfaces": {
+        "etf_volume": {
+          "name": "ETF份额与指数对比",
+          "description": "用于展示A股市场权益类及宽基ETF的份额变动与标的指数价格的联动关系，核心指标包括ETF最新份额与指数收盘价。通过双轴叠加对比份额与价格走势的同步或背离，可以快速判断市场资金在上涨/下跌周期中的加仓节奏与防御倾向。该图表适用于跟踪市场资金流向与投资者情绪变化。",
+          "inputParams": [
+            {
+              "code": "top",
+              "name": "权益类/宽基类",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "0-权益类ETF；1-宽基ETF"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "沪深300指数价格、ETF最新份额（亿份）"
+            },
+            {
+              "code": "value",
+              "name": "指标值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "包含沪深300指数价格数值和对应类型的ETF最新份额"
+            }
+          ]
+        },
+        "etf_net_inflow": {
+          "name": "ETF规模净流入",
+          "description": "用于展示A股市场权益类及宽基ETF自分批数据起始日以来的累计净流入规模变化，指标为每日净流入金额（亿元）的堆积曲线。通过观察累计曲线的斜率变化与阶段性加速/放缓拐点，可以快速判断长线资金在不同市场阶段的持续流入强度与趋势持续性。该图表适用于跟踪市场长线资金布局节奏与结构性仓位变化。",
+          "inputParams": [
+            {
+              "code": "top",
+              "name": "权益类/宽基类",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "0-权益类ETF；1-宽基ETF"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "ETF 规模净流入（亿元）"
+            },
+            {
+              "code": "value",
+              "name": "指标值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "ETF 规模净流入金额"
+            }
+          ]
+        },
+        "etf_theme": {
+          "name": "指数主题ETF统计",
+          "description": "用于展示特定指数主题（沪深300、中证500、中证1000）对应ETF的份额变动与指数价格的联动关系，指标包括各主题ETF最新份额与标的指数价格。通过对比不同市值风格指数ETF的份额变化节奏与弹性差异，可以快速判断市场在大盘/中盘/小盘风格上的资金偏好迁移情况。该图表适用于跟踪市场风格切换与主题轮动趋势，仅供参考",
+          "inputParams": [
+            {
+              "code": "etf_code",
+              "name": "主题指数",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "hs300-沪深300；zz500-中证500；zz1000-中证1000"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "包含主题指数价格和对应主题指数的ETF最新份额（亿份）"
+            },
+            {
+              "code": "value",
+              "name": "指标值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "主题指数价格和对应主题指数的ETF最新份额（亿份）"
+            }
+          ]
+        }
+      }
+    },
     "ggcwsj": {
       "categoryName": "财务数据",
       "interfaces": {
@@ -24184,7 +25399,7 @@
               "name": "指数代码",
               "type": "VARCHAR",
               "required": "否",
-              "description": "000922;H30269 (精度：20)"
+              "description": "000922-中证红利指数;H30269-中证红利低波动指数 (精度：20)"
             }
           ],
           "fields": [
@@ -24218,10 +25433,10 @@
             },
             {
               "code": "YIELD",
-              "name": "收益",
+              "name": "十年期国债收益率",
               "type": "NUMERIC",
               "required": "否",
-              "description": "收益 [单位：%] (精度：12,4)"
+              "description": "十年期国债收益率 [单位：%] (精度：12,4)"
             },
             {
               "code": "SPREAD",
@@ -26864,6 +28079,54 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "基金份额基数 [单位：份] (精度：18,0)"
+            }
+          ]
+        }
+      }
+    },
+    "hgtj": {
+      "categoryName": "宏观统计",
+      "interfaces": {
+        "usa_stats": {
+          "name": "美国宏观利率",
+          "description": "展示美联储政策利率（联邦基金利率）与市场定价的一年期美债收益率的走势变化。联邦基金利率反映联储政策立场，一年期国债收益率反映市场对短期资金成本的定价，两者走势可对照观察。图表可用于跟踪美国利率环境变化、辅助了解美元流动性状况，为资产配置提供宏观背景参考。",
+          "inputParams": [
+            {
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            }
+          ],
+          "fields": [
+            {
+              "code": "tradedate",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "series",
+              "name": "数据主体",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "数据主体"
+            },
+            {
+              "code": "label",
+              "name": "指标含义",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "美国联邦基金利率，美国国债收益率1年"
+            },
+            {
+              "code": "value",
+              "name": "指标值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "美国联邦基金利率，美国国债收益率1年"
             }
           ]
         }
@@ -30264,6 +31527,140 @@
             }
           ]
         },
+        "fund_main_hold": {
+          "name": "主要持有人",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "0-其它;1-机构;2-个人"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_RANK",
+              "name": "持有人名次",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SOURCE_MARK",
+              "name": "信息来源",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
+            },
+            {
+              "code": "HOLDER_NAME",
+              "name": "持有人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "持有人名称 (精度：400)"
+            },
+            {
+              "code": "HOLDER_CODE",
+              "name": "持有人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
+            },
+            {
+              "code": "HLD_VOL",
+              "name": "持有份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额 [单位：份] (精度：18,2)"
+            },
+            {
+              "code": "HLD_PCT",
+              "name": "持有比例",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "HLD_VOL_CHNG",
+              "name": "持有份额增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额增减 [单位：份] (精度：18,0)"
+            },
+            {
+              "code": "HLD_PCT_CHNG",
+              "name": "持有比例增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例增减 [单位：%] (精度：9,4)"
+            }
+          ]
+        },
         "fund_hold_struct": {
           "name": "持仓结构",
           "description": "**提示信息",
@@ -30461,225 +31858,6 @@
             }
           ]
         },
-        "fund_main_hold": {
-          "name": "主要持有人",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "0-其它;1-机构;2-个人"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_RANK",
-              "name": "持有人名次",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SOURCE_MARK",
-              "name": "信息来源",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
-            },
-            {
-              "code": "HOLDER_NAME",
-              "name": "持有人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "持有人名称 (精度：400)"
-            },
-            {
-              "code": "HOLDER_CODE",
-              "name": "持有人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
-            },
-            {
-              "code": "HLD_VOL",
-              "name": "持有份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额 [单位：份] (精度：18,2)"
-            },
-            {
-              "code": "HLD_PCT",
-              "name": "持有比例",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例 [单位：%] (精度：9,4)"
-            },
-            {
-              "code": "HLD_VOL_CHNG",
-              "name": "持有份额增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额增减 [单位：份] (精度：18,0)"
-            },
-            {
-              "code": "HLD_PCT_CHNG",
-              "name": "持有比例增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例增减 [单位：%] (精度：9,4)"
-            }
-          ]
-        },
-        "fund_init_hold": {
-          "name": "发起人持仓",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ORGR_SEQ",
-              "name": "发起人序号",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "ORGR_CODE",
-              "name": "发起人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "ORGR_NAME",
-              "name": "发起人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "发起人名称 (精度：200)"
-            },
-            {
-              "code": "ORGR_HLD_NTRD_VOL",
-              "name": "发起人持有未流通份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "发起人持有未流通份额 [单位：份] (精度：18,0)"
-            },
-            {
-              "code": "ORGR_HLD_VOL",
-              "name": "发起人持有总份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "发起人持有总份额 [单位：份] (精度：18,0)"
-            }
-          ]
-        },
         "fund_hold_meet": {
           "name": "持有人大会",
           "description": "**提示信息",
@@ -30776,6 +31954,91 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "大会议题 (精度：400)"
+            }
+          ]
+        },
+        "fund_init_hold": {
+          "name": "发起人持仓",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ORGR_SEQ",
+              "name": "发起人序号",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "ORGR_CODE",
+              "name": "发起人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "ORGR_NAME",
+              "name": "发起人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "发起人名称 (精度：200)"
+            },
+            {
+              "code": "ORGR_HLD_NTRD_VOL",
+              "name": "发起人持有未流通份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "发起人持有未流通份额 [单位：份] (精度：18,0)"
+            },
+            {
+              "code": "ORGR_HLD_VOL",
+              "name": "发起人持有总份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "发起人持有总份额 [单位：份] (精度：18,0)"
             }
           ]
         },
@@ -35083,84 +36346,6 @@
     "gmjjcwsj": {
       "categoryName": "财务数据",
       "interfaces": {
-        "fund_rpt_base": {
-          "name": "定期报告基础",
-          "description": "获取基金在定期报告中披露的基金在报告期内的投资策略和业绩表现的说明，以及管理人对宏观经济、证券市场及行业走势的简要展望",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "RPT_CLS",
-              "name": "报告类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "PERIODDATE",
-              "name": "报表日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_PERIODDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
-            },
-            {
-              "code": "ED_PERIODDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：12)"
-            },
-            {
-              "code": "PERIODDATE",
-              "name": "报表日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "RPT_CLS",
-              "name": "报告类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "ITEM_CODE",
-              "name": "项目代码",
-              "type": "INT",
-              "required": "否",
-              "description": "1-管理层经营与分析"
-            },
-            {
-              "code": "ITEM_CONT",
-              "name": "项目内容",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目内容 (精度：MAX)"
-            }
-          ]
-        },
         "fund_fin_idx": {
           "name": "基金主要财务指标",
           "description": "本表记录基金定期报告财务指标内容，包括本期已实现收益、本期利润、期末基金资产净值等内容。",
@@ -35432,6 +36617,84 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "项目内部收益率 [单位：%] (精度：19,8)"
+            }
+          ]
+        },
+        "fund_rpt_base": {
+          "name": "定期报告基础",
+          "description": "获取基金在定期报告中披露的基金在报告期内的投资策略和业绩表现的说明，以及管理人对宏观经济、证券市场及行业走势的简要展望",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "RPT_CLS",
+              "name": "报告类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "PERIODDATE",
+              "name": "报表日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_PERIODDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
+            },
+            {
+              "code": "ED_PERIODDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序； (精度：12)"
+            },
+            {
+              "code": "PERIODDATE",
+              "name": "报表日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "RPT_CLS",
+              "name": "报告类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "ITEM_CODE",
+              "name": "项目代码",
+              "type": "INT",
+              "required": "否",
+              "description": "1-管理层经营与分析"
+            },
+            {
+              "code": "ITEM_CONT",
+              "name": "项目内容",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目内容 (精度：MAX)"
             }
           ]
         }
@@ -35734,6 +36997,98 @@
     "gmjjggzx": {
       "categoryName": "公告资讯",
       "interfaces": {
+        "fund_ann": {
+          "name": "基金公告",
+          "description": "获取基金公告数据",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "KEY_CAT",
+              "name": "关键词分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询 (精度：50)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "TITLE",
+              "name": "标题",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "标题 (精度：256)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "业绩报告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "CLS_NAME",
+              "name": "公告分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公告分类 (精度：50)"
+            },
+            {
+              "code": "ACCE_ROUTE",
+              "name": "附件路径",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "需与客服确认附件域名前缀组合访问 (精度：256)"
+            },
+            {
+              "code": "KEY_CAT",
+              "name": "关键词分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询 (精度：50)"
+            }
+          ]
+        },
         "fund_res_report": {
           "name": "基金研究报告",
           "description": "获取基金相关的研报信息",
@@ -35943,98 +37298,6 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "涨跌幅限制类型 (精度：50)"
-            }
-          ]
-        },
-        "fund_ann": {
-          "name": "基金公告",
-          "description": "获取基金公告数据",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "KEY_CAT",
-              "name": "关键词分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询 (精度：50)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "TITLE",
-              "name": "标题",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "标题 (精度：256)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "业绩报告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "CLS_NAME",
-              "name": "公告分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "公告分类 (精度：50)"
-            },
-            {
-              "code": "ACCE_ROUTE",
-              "name": "附件路径",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "需与客服确认附件域名前缀组合访问 (精度：256)"
-            },
-            {
-              "code": "KEY_CAT",
-              "name": "关键词分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询 (精度：50)"
             }
           ]
         }
