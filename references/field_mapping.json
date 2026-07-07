@@ -11706,28 +11706,28 @@
             {
               "code": "RPT_YEAR",
               "name": "统计年度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）"
             },
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "统计月度"
             },
             {
               "code": "SD_RPT_YEAR",
               "name": "开始日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             },
             {
               "code": "ED_RPT_YEAR",
               "name": "截止日期",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "格式（YYYY）-取RPT_YEAR"
             }
@@ -24810,21 +24810,21 @@
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "月份（YYYYMM，下同），支持多个月份同时输入，逗号分隔"
             },
             {
               "code": "SD_RPT_MONTH",
               "name": "开始月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "取RPT_MONTH"
             },
             {
               "code": "ED_RPT_MONTH",
               "name": "截止月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "取RPT_MONTH"
             }
@@ -24833,7 +24833,7 @@
             {
               "code": "RPT_MONTH",
               "name": "统计月度",
-              "type": "VARCHAR",
+              "type": "INT",
               "required": "否",
               "description": "支持排序；月份（YYYYMM）"
             },
@@ -35403,7 +35403,7 @@
               "name": "交易日期",
               "type": "VARCHAR",
               "required": "否",
-              "description": "格式（YYYYMMdd）"
+              "description": "格式（YYYY-MM-dd）"
             },
             {
               "code": "SD_TRADEDATE",
@@ -35426,7 +35426,7 @@
               "name": "交易日期",
               "type": "VARCHAR",
               "required": "否",
-              "description": "支持排序；格式（YYYYMMdd）"
+              "description": "支持排序；格式（YYYY-MM-dd）"
             },
             {
               "code": "HK_CONN_SH",
