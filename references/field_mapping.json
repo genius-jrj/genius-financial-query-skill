@@ -1,6 +1,6 @@
 {
   "version": "4.0.0",
-  "updateTime": "2026-07-03",
+  "updateTime": "2026-07-07",
   "description": "金融数据接口字段映射表，包含所有接口的完整字段信息",
   "categoryMapping": {
     "gpsj": "股票数据"
@@ -215,9 +215,9 @@
       "parent": null
     }
   },
-  "totalInterfaces": 251,
-  "totalInputParams": 1067,
-  "totalOutputFields": 3904,
+  "totalInterfaces": 252,
+  "totalInputParams": 1069,
+  "totalOutputFields": 3908,
   "interfaces": {
     "cne5": {
       "categoryName": "Barra风险模型（CNE5）",
@@ -7190,6 +7190,63 @@
               "description": "收益 [单位：%] (精度：12,4)"
             }
           ]
+        },
+        "bnd_benchmark_intr": {
+          "name": "银行间回购定盘利率",
+          "description": "获取银行间回购定盘利率日行情数据",
+          "inputParams": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "FR001",
+              "name": "银行间隔夜回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间隔夜回购定盘利率 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "FR007",
+              "name": "银行间七天回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间七天回购定盘利率 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "FR014",
+              "name": "银行间十四天回购定盘利率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "银行间十四天回购定盘利率 [单位：%] (精度：9,4)"
+            }
+          ]
         }
       }
     },
@@ -11599,7 +11656,7 @@
           ],
           "fields": [
             {
-              "code": "date",
+              "code": "tradedate",
               "name": "交易日期",
               "type": "VARCHAR",
               "required": "否",
@@ -12299,60 +12356,53 @@
             }
           ]
         },
-        "bnd_benchmark_intr": {
-          "name": "银行间回购定盘利率",
-          "description": "获取银行间回购定盘利率日行情数据",
+        "gov_bonds": {
+          "name": "特殊债券发行月度统计",
+          "description": "政府债券月度发行量统计数据。按月份统计各类政府债券的发行金额（亿元）和发行只数，债券类型分为 8 类：国债、地方一般债、专项债、再融资专项债、再融资一般债、再融资债券_其他、地方政府债_其他、其他。风险提示：本接口数据为算法自动分类汇总，并非官方统计机构发布数据，分类依赖记录的二级分类与债券简称关键词匹配，生成分类后由程序计算分组汇总结果。",
           "inputParams": [
             {
-              "code": "ENDDATE",
-              "name": "截止日期",
+              "code": "begin_date",
+              "name": "开始日期",
               "type": "VARCHAR",
               "required": "否",
               "description": "格式（YYYY-MM-dd）"
             },
             {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
+              "code": "bond_type",
+              "name": "债券类型",
               "type": "VARCHAR",
               "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+              "description": "可选值：国债、地方一般债、专项债、再融资专项债、再融资一般债、再融资债券_其他、地方政府债_其他、其他"
             }
           ],
           "fields": [
             {
-              "code": "ENDDATE",
-              "name": "截止日期",
+              "code": "tradedate",
+              "name": "月份",
               "type": "VARCHAR",
               "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
+              "description": "月份 格式（YYYYMM）"
             },
             {
-              "code": "FR001",
-              "name": "银行间隔夜回购定盘利率",
-              "type": "NUMERIC",
+              "code": "bond_type",
+              "name": "债券类型",
+              "type": "VARCHAR",
               "required": "否",
-              "description": "银行间隔夜回购定盘利率 [单位：%] (精度：9,4)"
+              "description": "包括国债、地方一般债、专项债、再融资专项债、再融资一般债、再融资债券_其他、地方政府债_其他、其他"
             },
             {
-              "code": "FR007",
-              "name": "银行间七天回购定盘利率",
+              "code": "issue_amt",
+              "name": "月度发行金额",
               "type": "NUMERIC",
               "required": "否",
-              "description": "银行间七天回购定盘利率 [单位：%] (精度：9,4)"
+              "description": "月度发行金额 [单位：亿]"
             },
             {
-              "code": "FR014",
-              "name": "银行间十四天回购定盘利率",
+              "code": "issue_count",
+              "name": "月度发行笔数",
               "type": "NUMERIC",
               "required": "否",
-              "description": "银行间十四天回购定盘利率 [单位：%] (精度：9,4)"
+              "description": "月度发行笔数"
             }
           ]
         }
@@ -31527,140 +31577,6 @@
             }
           ]
         },
-        "fund_main_hold": {
-          "name": "主要持有人",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "0-其它;1-机构;2-个人"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_RANK",
-              "name": "持有人名次",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SOURCE_MARK",
-              "name": "信息来源",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
-            },
-            {
-              "code": "HOLDER_NAME",
-              "name": "持有人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "持有人名称 (精度：400)"
-            },
-            {
-              "code": "HOLDER_CODE",
-              "name": "持有人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
-            },
-            {
-              "code": "HLD_VOL",
-              "name": "持有份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额 [单位：份] (精度：18,2)"
-            },
-            {
-              "code": "HLD_PCT",
-              "name": "持有比例",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例 [单位：%] (精度：9,4)"
-            },
-            {
-              "code": "HLD_VOL_CHNG",
-              "name": "持有份额增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额增减 [单位：份] (精度：18,0)"
-            },
-            {
-              "code": "HLD_PCT_CHNG",
-              "name": "持有比例增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例增减 [单位：%] (精度：9,4)"
-            }
-          ]
-        },
         "fund_hold_struct": {
           "name": "持仓结构",
           "description": "**提示信息",
@@ -31855,6 +31771,140 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "基金经理持有份额总量区间 [单位：万份] (精度：20)"
+            }
+          ]
+        },
+        "fund_main_hold": {
+          "name": "主要持有人",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "0-其它;1-机构;2-个人"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_RANK",
+              "name": "持有人名次",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SOURCE_MARK",
+              "name": "信息来源",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
+            },
+            {
+              "code": "HOLDER_NAME",
+              "name": "持有人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "持有人名称 (精度：400)"
+            },
+            {
+              "code": "HOLDER_CODE",
+              "name": "持有人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
+            },
+            {
+              "code": "HLD_VOL",
+              "name": "持有份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额 [单位：份] (精度：18,2)"
+            },
+            {
+              "code": "HLD_PCT",
+              "name": "持有比例",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "HLD_VOL_CHNG",
+              "name": "持有份额增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额增减 [单位：份] (精度：18,0)"
+            },
+            {
+              "code": "HLD_PCT_CHNG",
+              "name": "持有比例增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例增减 [单位：%] (精度：9,4)"
             }
           ]
         },
@@ -36346,6 +36396,84 @@
     "gmjjcwsj": {
       "categoryName": "财务数据",
       "interfaces": {
+        "fund_rpt_base": {
+          "name": "定期报告基础",
+          "description": "获取基金在定期报告中披露的基金在报告期内的投资策略和业绩表现的说明，以及管理人对宏观经济、证券市场及行业走势的简要展望",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "RPT_CLS",
+              "name": "报告类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "PERIODDATE",
+              "name": "报表日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_PERIODDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
+            },
+            {
+              "code": "ED_PERIODDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序； (精度：12)"
+            },
+            {
+              "code": "PERIODDATE",
+              "name": "报表日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "RPT_CLS",
+              "name": "报告类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "ITEM_CODE",
+              "name": "项目代码",
+              "type": "INT",
+              "required": "否",
+              "description": "1-管理层经营与分析"
+            },
+            {
+              "code": "ITEM_CONT",
+              "name": "项目内容",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目内容 (精度：MAX)"
+            }
+          ]
+        },
         "fund_fin_idx": {
           "name": "基金主要财务指标",
           "description": "本表记录基金定期报告财务指标内容，包括本期已实现收益、本期利润、期末基金资产净值等内容。",
@@ -36617,84 +36745,6 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "项目内部收益率 [单位：%] (精度：19,8)"
-            }
-          ]
-        },
-        "fund_rpt_base": {
-          "name": "定期报告基础",
-          "description": "获取基金在定期报告中披露的基金在报告期内的投资策略和业绩表现的说明，以及管理人对宏观经济、证券市场及行业走势的简要展望",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "RPT_CLS",
-              "name": "报告类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "PERIODDATE",
-              "name": "报表日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_PERIODDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
-            },
-            {
-              "code": "ED_PERIODDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取PERIODDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：12)"
-            },
-            {
-              "code": "PERIODDATE",
-              "name": "报表日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "RPT_CLS",
-              "name": "报告类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "ITEM_CODE",
-              "name": "项目代码",
-              "type": "INT",
-              "required": "否",
-              "description": "1-管理层经营与分析"
-            },
-            {
-              "code": "ITEM_CONT",
-              "name": "项目内容",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目内容 (精度：MAX)"
             }
           ]
         }
