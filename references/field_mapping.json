@@ -1,6 +1,6 @@
 {
   "version": "4.0.0",
-  "updateTime": "2026-07-07",
+  "updateTime": "2026-07-15",
   "description": "金融数据接口字段映射表，包含所有接口的完整字段信息",
   "categoryMapping": {
     "gpsj": "股票数据"
@@ -215,9 +215,9 @@
       "parent": null
     }
   },
-  "totalInterfaces": 252,
-  "totalInputParams": 1069,
-  "totalOutputFields": 3908,
+  "totalInterfaces": 251,
+  "totalInputParams": 1073,
+  "totalOutputFields": 3905,
   "interfaces": {
     "cne5": {
       "categoryName": "Barra风险模型（CNE5）",
@@ -10415,7 +10415,7 @@
               "name": "统计年度",
               "type": "INT",
               "required": "否",
-              "description": "支持排序；格式（YYYY）"
+              "description": "支持排序；格式（YYYY-MM）"
             },
             {
               "code": "RPT_MONTH",
@@ -10486,7 +10486,7 @@
               "name": "统计年度",
               "type": "INT",
               "required": "否",
-              "description": "支持排序；格式（YYYY）"
+              "description": "支持排序；格式（YYYY-MM）"
             },
             {
               "code": "RPT_MONTH",
@@ -11182,6 +11182,20 @@
               "type": "INT",
               "required": "否",
               "description": "1-是；2-否"
+            },
+            {
+              "code": "RPT_OBJECT",
+              "name": "统计对象",
+              "type": "INT",
+              "required": "否",
+              "description": "1-全国；2-城市；3-农村"
+            },
+            {
+              "code": "ITEM_CODE",
+              "name": "居民消费项目代码",
+              "type": "INT",
+              "required": "否",
+              "description": "0-总指数;1-食品类;2-粮食;3-肉禽及其制品;4-蛋;5-水产品;6-鲜菜;7-鲜果;8-在外用餐;9-烟酒及用品;10-衣着;11-家庭设备用品及服务;12-医疗保健及个人用品;13-交通和通信;14-娱乐教育文化用品服务;15-居住;16-消费品;17-服务项目;18-非食品;19-油脂;20-猪肉;21-液体乳及乳制品;22-烟草;23-酒;24-服装;25-鞋;26-耐用油消费品;27-家庭服务及加工维修服务;28-中药材及中成药;29-西药;30-医疗保健服务;31-交通工具;32-车用燃料及零配件;33-通信工具;34-通信服务;35-教育服务;36-旅游;37-建房及装修材料;38-住房租金;39-水、电、燃料;40-服务项目（不包括食品和能源）;41-服务项目（不包括鲜菜和鲜果）;42-食品烟酒;43-食用油;44-畜肉类;45-畜肉类（牛肉）;46-畜肉类（羊肉）;47-奶类;48-衣着加工服务费;49-家用器具;50-交通工具使用和维修;51-邮递服务;52-其他用品和服务"
             }
           ],
           "fields": [
@@ -11190,7 +11204,7 @@
               "name": "统计年度",
               "type": "INT",
               "required": "否",
-              "description": "支持排序；格式（YYYY）"
+              "description": "支持排序；格式（YYYY-MM）"
             },
             {
               "code": "RPT_MONTH",
@@ -11211,14 +11225,14 @@
               "name": "统计对象",
               "type": "INT",
               "required": "否",
-              "description": "1-全国"
+              "description": "1-全国；2-城市；3-农村"
             },
             {
               "code": "ITEM_CODE",
               "name": "居民消费项目代码",
               "type": "INT",
               "required": "否",
-              "description": "0-总指数"
+              "description": "0-总指数;1-食品类;2-粮食;3-肉禽及其制品;4-蛋;5-水产品;6-鲜菜;7-鲜果;8-在外用餐;9-烟酒及用品;10-衣着;11-家庭设备用品及服务;12-医疗保健及个人用品;13-交通和通信;14-娱乐教育文化用品服务;15-居住;16-消费品;17-服务项目;18-非食品;19-油脂;20-猪肉;21-液体乳及乳制品;22-烟草;23-酒;24-服装;25-鞋;26-耐用油消费品;27-家庭服务及加工维修服务;28-中药材及中成药;29-西药;30-医疗保健服务;31-交通工具;32-车用燃料及零配件;33-通信工具;34-通信服务;35-教育服务;36-旅游;37-建房及装修材料;38-住房租金;39-水、电、燃料;40-服务项目（不包括食品和能源）;41-服务项目（不包括鲜菜和鲜果）;42-食品烟酒;43-食用油;44-畜肉类;45-畜肉类（牛肉）;46-畜肉类（羊肉）;47-奶类;48-衣着加工服务费;49-家用器具;50-交通工具使用和维修;51-邮递服务;52-其他用品和服务"
             },
             {
               "code": "CPI",
@@ -11226,6 +11240,13 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "居民消费项目价格指数 (精度：9,4)"
+            },
+            {
+              "code": "ITEM_NAME",
+              "name": "居民消费项目名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "居民消费项目名称"
             }
           ]
         },
@@ -11325,7 +11346,7 @@
               "name": "统计月度",
               "type": "VARCHAR",
               "required": "否",
-              "description": "支持排序；格式（YYYYMM）"
+              "description": "支持排序；格式（YYYY-MM）"
             },
             {
               "code": "TSF_FLOW",
@@ -21897,16 +21918,30 @@
     "etffx": {
       "categoryName": "ETF分析",
       "interfaces": {
-        "etf_volume": {
-          "name": "ETF份额与指数对比",
-          "description": "用于展示A股市场权益类及宽基ETF的份额变动与标的指数价格的联动关系，核心指标包括ETF最新份额与指数收盘价。通过双轴叠加对比份额与价格走势的同步或背离，可以快速判断市场资金在上涨/下跌周期中的加仓节奏与防御倾向。该图表适用于跟踪市场资金流向与投资者情绪变化。",
+        "etf_market_topic": {
+          "name": "ETF主题",
+          "description": "A股主题 ETF 规模与份额变化\n用于展示科技、消费、医药等产业主题及芯片半导体、人工智能、新能源等细分概念ETF的规模与份额变化，并结合指数走势观察主题资金表现。通过对比不同主题的资金变化，可以快速判断市场热点、资金偏好与主题轮动趋势。该图表适用于跟踪产业和概念主题的资金布局情况。",
           "inputParams": [
             {
-              "code": "top",
-              "name": "权益类/宽基类",
-              "type": "NUMERIC",
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
               "required": "否",
-              "description": "0-权益类ETF；1-宽基ETF"
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "theme_title_fliter",
+              "name": "一级主题",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "包含特色类、消费类、资源类、科技类、医药类、金融地产类、工业制造类"
+            },
+            {
+              "code": "theme_sub_fliter",
+              "name": "二级主题",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "可多选组合，包含大科技、新能源、芯片半导体、人工智能、有色金属、医药卫生、大消费、农牧渔、资源能源、 电力、证券保险、国防军工、计算机、汽车、碳中和、智能制造、国企央企、机械设备、 银行、食品饮料、通信、ESG、家用电器、新能源车、数字经济、创新药、传媒、 金融科技、基建工程、云计算、物联网、新材料、化工、区域经济、高端装备、航天航空、 大金融、房地产、交通运输、公用事业、电子制造"
             }
           ],
           "fields": [
@@ -21929,27 +21964,34 @@
               "name": "指标含义",
               "type": "VARCHAR",
               "required": "否",
-              "description": "沪深300指数价格、ETF最新份额（亿份）"
+              "description": "包括基准指数名称和对应主题的ETF 总份额（亿份）、 ETF 总规模（亿元）"
             },
             {
               "code": "value",
               "name": "指标值",
               "type": "NUMERIC",
               "required": "否",
-              "description": "包含沪深300指数价格数值和对应类型的ETF最新份额"
+              "description": "包括基准指数价格和对应主题的ETF 总份额（亿份）、 ETF 总规模（亿元）"
             }
           ]
         },
-        "etf_net_inflow": {
-          "name": "ETF规模净流入",
-          "description": "用于展示A股市场权益类及宽基ETF自分批数据起始日以来的累计净流入规模变化，指标为每日净流入金额（亿元）的堆积曲线。通过观察累计曲线的斜率变化与阶段性加速/放缓拐点，可以快速判断长线资金在不同市场阶段的持续流入强度与趋势持续性。该图表适用于跟踪市场长线资金布局节奏与结构性仓位变化。",
+        "etf_market_update": {
+          "name": "ETF市场",
+          "description": "A股 ETF 市场分类规模与份额变化\n用于展示A股ETF在宽基、行业、主题、风格等市场分类下的规模、份额变化，也可按沪深300、中证500、中证1000、科创板50等指数主题进行统计，并结合对应指数价格观察资金与市场走势的联动关系。该图表适用于跟踪不同市场板块的资金流向、配置变化与投资者情绪。",
           "inputParams": [
             {
-              "code": "top",
-              "name": "权益类/宽基类",
-              "type": "NUMERIC",
+              "code": "begin_date",
+              "name": "开始日期",
+              "type": "VARCHAR",
               "required": "否",
-              "description": "0-权益类ETF；1-宽基ETF"
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "type",
+              "name": "分类筛选",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-宽基； 2-行业； 3-主题,；4-风格；hs300-沪深300；zz500-中证500；zz1000-中证1000；kc50-科创板50"
             }
           ],
           "fields": [
@@ -21972,57 +22014,14 @@
               "name": "指标含义",
               "type": "VARCHAR",
               "required": "否",
-              "description": "ETF 规模净流入（亿元）"
+              "description": "包含指数名称和对应主题指数的ETF最新份额（亿份）"
             },
             {
               "code": "value",
               "name": "指标值",
               "type": "NUMERIC",
               "required": "否",
-              "description": "ETF 规模净流入金额"
-            }
-          ]
-        },
-        "etf_theme": {
-          "name": "指数主题ETF统计",
-          "description": "用于展示特定指数主题（沪深300、中证500、中证1000）对应ETF的份额变动与指数价格的联动关系，指标包括各主题ETF最新份额与标的指数价格。通过对比不同市值风格指数ETF的份额变化节奏与弹性差异，可以快速判断市场在大盘/中盘/小盘风格上的资金偏好迁移情况。该图表适用于跟踪市场风格切换与主题轮动趋势，仅供参考",
-          "inputParams": [
-            {
-              "code": "etf_code",
-              "name": "主题指数",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "hs300-沪深300；zz500-中证500；zz1000-中证1000"
-            }
-          ],
-          "fields": [
-            {
-              "code": "tradedate",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "series",
-              "name": "数据主体",
-              "type": "OBJECT",
-              "required": "否",
-              "description": "数据主体"
-            },
-            {
-              "code": "label",
-              "name": "指标含义",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "包含主题指数价格和对应主题指数的ETF最新份额（亿份）"
-            },
-            {
-              "code": "value",
-              "name": "指标值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "主题指数价格和对应主题指数的ETF最新份额（亿份）"
+              "description": "市场指数价格和对应主题指数的ETF最新份额（亿份）"
             }
           ]
         }
@@ -35403,7 +35402,7 @@
               "name": "交易日期",
               "type": "VARCHAR",
               "required": "否",
-              "description": "格式（YYYY-MM-dd）"
+              "description": "格式（YYYYMMdd）"
             },
             {
               "code": "SD_TRADEDATE",
@@ -35426,7 +35425,7 @@
               "name": "交易日期",
               "type": "VARCHAR",
               "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
+              "description": "支持排序；格式（YYYYMMdd）"
             },
             {
               "code": "HK_CONN_SH",
