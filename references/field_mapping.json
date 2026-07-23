@@ -1,6 +1,6 @@
 {
   "version": "4.0.0",
-  "updateTime": "2026-07-15",
+  "updateTime": "2026-07-23",
   "description": "金融数据接口字段映射表，包含所有接口的完整字段信息",
   "categoryMapping": {
     "gpsj": "股票数据"
@@ -158,14 +158,6 @@
       "name": "自有资讯",
       "parent": null
     },
-    "cne5": {
-      "name": "Barra风险模型（CNE5）",
-      "parent": null
-    },
-    "cne6": {
-      "name": "Barra风险模型（CNE6）",
-      "parent": null
-    },
     "cpys": {
       "name": "产品要素",
       "parent": null
@@ -215,1336 +207,10 @@
       "parent": null
     }
   },
-  "totalInterfaces": 251,
-  "totalInputParams": 1073,
-  "totalOutputFields": 3905,
+  "totalInterfaces": 241,
+  "totalInputParams": 1031,
+  "totalOutputFields": 3553,
   "interfaces": {
-    "cne5": {
-      "categoryName": "Barra风险模型（CNE5）",
-      "interfaces": {
-        "ana_fac_exp_cne5": {
-          "name": "CNE5因子暴露",
-          "description": "获取10个风格暴露因子值,31个按照申万21版本行业分类的因子暴露和6个申万14版本行业因子暴露",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105 北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：50)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "交易市场"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "银行行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "化工行业因子(申万14)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "综合行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "电气设备行业因子(申万14)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "电子行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "采掘行业因子(申万14)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "通信行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "基础化工行业因子(申万21)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "美容护理行业因子(申万21)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "煤炭行业因子(申万21)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "环保行业因子(申万21)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "石油石化行业因子(申万21)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "电力设备行业因子(申万21)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "社会服务行业因子(申万21)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "INT",
-              "required": "否",
-              "description": "国家因子"
-            }
-          ]
-        },
-        "ana_spec_ret_cne5": {
-          "name": "CNE5特质收益",
-          "description": "获取个股的特质收益率日级数据",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105 北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：20)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "交易市场"
-            },
-            {
-              "code": "SPEC_RET",
-              "name": "特质收益率",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,3)"
-            }
-          ]
-        },
-        "ana_spec_risk_cne5": {
-          "name": "CNE5特质风险",
-          "description": "获取个股的特质风险日级数据",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：20)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "SPEC_RISK",
-              "name": "特质风险",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,3)"
-            }
-          ]
-        },
-        "ana_fac_cov_cne5": {
-          "name": "CNE5风险因子协方差矩阵",
-          "description": "获取DAY级别的风险因子协方差矩阵",
-          "inputParams": [
-            {
-              "code": "FAC_NAME",
-              "name": "因子名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "例如：BETA、MOMENTUM等，所有因子字段都可搜索 (精度：50)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "FAC_NAME",
-              "name": "因子名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：50)"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "银行行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "化工行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "综合行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电气设备行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电子行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "采掘行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "通信行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "基础化工行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "美容护理行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "煤炭行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "环保行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "石油石化行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电力设备行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "社会服务行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国家因子 (精度：12,6)"
-            }
-          ]
-        },
-        "ana_fac_ret_cne5": {
-          "name": "CNE5风险因子收益",
-          "description": "获取10个风格因子收益值，31个按照申万21版本行业分类的因子收益和6个申万14版本行业因子收益的日级数据",
-          "inputParams": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "银行行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "化工行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "综合行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电气设备行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电子行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "采掘行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "通信行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "基础化工行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "美容护理行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "煤炭行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "环保行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "石油石化行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电力设备行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "社会服务行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国家因子 (精度：9,6)"
-            }
-          ]
-        }
-      }
-    },
     "cpys": {
       "categoryName": "产品要素",
       "interfaces": {
@@ -7825,1542 +6491,6 @@
         }
       }
     },
-    "cne6": {
-      "categoryName": "Barra风险模型（CNE6）",
-      "interfaces": {
-        "ana_fac_exp_cne6": {
-          "name": "CNE6因子暴露",
-          "description": "获取个股对各风格因子和行业因子的暴露值",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：50)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "DIVYILD",
-              "name": "股息率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EQYLD",
-              "name": "盈利质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNVAR",
-              "name": "盈利变动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "INVQUAL",
-              "name": "投资质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LTRSTR",
-              "name": "长期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "PROFIT",
-              "name": "盈利能力风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SENTI",
-              "name": "分析师情绪风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "INDMOM",
-              "name": "行业动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SEASON",
-              "name": "季节因素风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "STRSTR",
-              "name": "短期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "银行行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "化工行业因子(申万14)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "综合行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "电气设备行业因子(申万14)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "电子行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "采掘行业因子(申万14)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "通信行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "INT",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "INT",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "基础化工行业因子(申万21)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "美容护理行业因子(申万21)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "煤炭行业因子(申万21)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "环保行业因子(申万21)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "石油石化行业因子(申万21)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "电力设备行业因子(申万21)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "社会服务行业因子(申万21)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "INT",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "INT",
-              "required": "否",
-              "description": "国家因子"
-            }
-          ]
-        },
-        "ana_spec_ret_cne6": {
-          "name": "CNE6特质收益",
-          "description": "获取个股的特质收益率日级数据",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：20)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "SPEC_RET",
-              "name": "特质收益率",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,3)"
-            }
-          ]
-        },
-        "ana_spec_risk_cne6": {
-          "name": "CNE6特质风险",
-          "description": "获取个股的特质风险日级数据",
-          "inputParams": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股票代码 (精度：30)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "SEC_CODE",
-              "name": "股票代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：20)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "证券简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "证券简称 (精度：50)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "INT",
-              "required": "否",
-              "description": "1深圳证券交易所;2上海证券交易所;105北京证券交易所"
-            },
-            {
-              "code": "SPEC_RISK",
-              "name": "特质风险",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,3)"
-            }
-          ]
-        },
-        "ana_fac_cov_cne6": {
-          "name": "CNE6风险因子协方差矩阵",
-          "description": "获取风险因子协方差矩阵",
-          "inputParams": [
-            {
-              "code": "FAC_NAME",
-              "name": "因子名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "例如：BETA、MOMENTUM等，所有因子字段都可搜索 (精度：50)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "FAC_NAME",
-              "name": "因子名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序； (精度：50)"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "DIVYILD",
-              "name": "股息率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EQYLD",
-              "name": "盈利质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "EARNVAR",
-              "name": "盈利变动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "INVQUAL",
-              "name": "投资质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "LTRSTR",
-              "name": "长期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "PROFIT",
-              "name": "盈利能力风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SENTI",
-              "name": "分析师情绪风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "INDMOM",
-              "name": "行业动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "SEASON",
-              "name": "季节因素风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "STRSTR",
-              "name": "短期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：12,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "银行行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "化工行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "综合行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电气设备行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电子行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "采掘行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "通信行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14) (精度：12,6)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "基础化工行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "美容护理行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "煤炭行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "环保行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "石油石化行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电力设备行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "社会服务行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21) (精度：12,6)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国家因子 (精度：12,6)"
-            }
-          ]
-        },
-        "ana_fac_ret_cne6": {
-          "name": "CNE6风险因子收益",
-          "description": "获取20个风格因子收益值，31个按照申万21版本行业分类的因子收益和6个申万14版本行业因子收益的日级数据",
-          "inputParams": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取TRADEDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "BETA",
-              "name": "BETA风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "MOMENTUM",
-              "name": "动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "SIZE",
-              "name": "市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "EARNINGS_YIELD",
-              "name": "盈利风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "RESIDUAL_VOLATILITY",
-              "name": "残余波动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "GROWTH",
-              "name": "成长风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "VALUE",
-              "name": "价值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "LEVERAGE",
-              "name": "杠杆风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "LIQUIDTY",
-              "name": "流动性风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "NONLINEAR_SIZE",
-              "name": "非线性市值风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "DIVYILD",
-              "name": "股息率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "EQYLD",
-              "name": "盈利质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "EARNVAR",
-              "name": "盈利变动率风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "INVQUAL",
-              "name": "投资质量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "LTRSTR",
-              "name": "长期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "PROFIT",
-              "name": "盈利能力风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "SENTI",
-              "name": "分析师情绪风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "INDMOM",
-              "name": "行业动量风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "SEASON",
-              "name": "季节因素风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "STRSTR",
-              "name": "短期反转风格因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序； (精度：9,6)"
-            },
-            {
-              "code": "IND_AGRI",
-              "name": "农林牧渔行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "农林牧渔行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_AUTO",
-              "name": "汽车行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "汽车行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BANK",
-              "name": "银行行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "银行行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BMAT",
-              "name": "建筑材料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑材料行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_CHEM",
-              "name": "化工行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "化工行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMT",
-              "name": "商业贸易行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商业贸易行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMP",
-              "name": "计算机行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "计算机行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_COMPRE",
-              "name": "综合行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "综合行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_CONST",
-              "name": "建筑装饰行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "建筑装饰行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_DEFENSE",
-              "name": "国防军工行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国防军工行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_ELEC",
-              "name": "电气设备行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电气设备行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_ELECDEV",
-              "name": "电子行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电子行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_FOOD",
-              "name": "食品饮料行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "食品饮料行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_HEALTH",
-              "name": "医药生物行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "医药生物行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_HOUSE",
-              "name": "家用电器行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "家用电器行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_LEISURE",
-              "name": "休闲服务行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "休闲服务行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_LIGHT",
-              "name": "轻工制造行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "轻工制造行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MACHINE",
-              "name": "机械设备行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "机械设备行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MEDIA",
-              "name": "传媒行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "传媒行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_MINING",
-              "name": "采掘行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "采掘行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_NONBANK",
-              "name": "非银金融行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "非银金融行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_NONFER",
-              "name": "有色金属行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "有色金属行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_REAL",
-              "name": "房地产行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "房地产行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_STEEL",
-              "name": "钢铁行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "钢铁行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TELE",
-              "name": "通信行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "通信行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TEXT",
-              "name": "纺织服装行业因子(申万14)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服装行业因子(申万14) (精度：9,6)"
-            },
-            {
-              "code": "IND_TRANS",
-              "name": "交通运输行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交通运输行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_UTIL",
-              "name": "公用事业行业因子(申万14/21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "公用事业行业因子(申万14/21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BASECHEM",
-              "name": "基础化工行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "基础化工行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_BEAUTY",
-              "name": "美容护理行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "美容护理行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_COAL",
-              "name": "煤炭行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "煤炭行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_ENV",
-              "name": "环保行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "环保行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_PETRO",
-              "name": "石油石化行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "石油石化行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_POWEQ",
-              "name": "电力设备行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "电力设备行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_RETAIL",
-              "name": "商贸零售行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "商贸零售行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_SOCIAL",
-              "name": "社会服务行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "社会服务行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "IND_TEXTILE",
-              "name": "纺织服饰行业因子(申万21)",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "纺织服饰行业因子(申万21) (精度：9,6)"
-            },
-            {
-              "code": "COUNTRY",
-              "name": "国家因子",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "国家因子 (精度：9,6)"
-            }
-          ]
-        }
-      }
-    },
     "gghqsj": {
       "categoryName": "行情数据",
       "interfaces": {
@@ -11357,6 +8487,63 @@
             }
           ]
         },
+        "mac_cci": {
+          "name": "消费者信心指数",
+          "description": "获取消费者信心指数月度数据",
+          "inputParams": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "SD_RPT_YEAR",
+              "name": "开始日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            },
+            {
+              "code": "ED_RPT_YEAR",
+              "name": "截止日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；"
+            },
+            {
+              "code": "CCI",
+              "name": "消费者信心指数",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "消费者信心指数 (精度：6,2)"
+            }
+          ]
+        },
         "mac_retail_amt": {
           "name": "社会消费品零售总额",
           "description": "获取社会消费品零售总额月度数据",
@@ -11432,63 +8619,6 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "社会消费品零售总额同比增长 [单位：%] (精度：18,4)"
-            }
-          ]
-        },
-        "mac_cci": {
-          "name": "消费者信心指数",
-          "description": "获取消费者信心指数月度数据",
-          "inputParams": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "INT",
-              "required": "否",
-              "description": "统计月度"
-            },
-            {
-              "code": "SD_RPT_YEAR",
-              "name": "开始日期",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            },
-            {
-              "code": "ED_RPT_YEAR",
-              "name": "截止日期",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            }
-          ],
-          "fields": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序；格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "CCI",
-              "name": "消费者信心指数",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "消费者信心指数 (精度：6,2)"
             }
           ]
         },
@@ -12228,63 +9358,6 @@
             }
           ]
         },
-        "mac_fx_resv": {
-          "name": "央行外汇储备",
-          "description": "获取央行外汇储备月度数据",
-          "inputParams": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "INT",
-              "required": "否",
-              "description": "统计月度"
-            },
-            {
-              "code": "SD_RPT_YEAR",
-              "name": "开始日期",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            },
-            {
-              "code": "ED_RPT_YEAR",
-              "name": "截止日期",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）-取RPT_YEAR"
-            }
-          ],
-          "fields": [
-            {
-              "code": "RPT_YEAR",
-              "name": "统计年度",
-              "type": "INT",
-              "required": "否",
-              "description": "格式（YYYY）"
-            },
-            {
-              "code": "RPT_MONTH",
-              "name": "统计月度",
-              "type": "INT",
-              "required": "否",
-              "description": "统计月度"
-            },
-            {
-              "code": "FOREX_RESV",
-              "name": "国家外汇储备",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "为累计数据 [单位：亿美元] (精度：10,4)"
-            }
-          ]
-        },
         "mac_forex_quot": {
           "name": "人民币外汇牌价",
           "description": "获取人民币外汇牌价日行情数据",
@@ -12374,6 +9447,63 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "货币名称 (精度：30)"
+            }
+          ]
+        },
+        "mac_fx_resv": {
+          "name": "央行外汇储备",
+          "description": "获取央行外汇储备月度数据",
+          "inputParams": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "SD_RPT_YEAR",
+              "name": "开始日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            },
+            {
+              "code": "ED_RPT_YEAR",
+              "name": "截止日期",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）-取RPT_YEAR"
+            }
+          ],
+          "fields": [
+            {
+              "code": "RPT_YEAR",
+              "name": "统计年度",
+              "type": "INT",
+              "required": "否",
+              "description": "格式（YYYY）"
+            },
+            {
+              "code": "RPT_MONTH",
+              "name": "统计月度",
+              "type": "INT",
+              "required": "否",
+              "description": "统计月度"
+            },
+            {
+              "code": "FOREX_RESV",
+              "name": "国家外汇储备",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "为累计数据 [单位：亿美元] (精度：10,4)"
             }
           ]
         },
@@ -20990,530 +18120,9 @@
             }
           ]
         },
-        "reits_und_asset": {
-          "name": "底层资产信息",
-          "description": "获取REITS基金底层资产相关信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式(YYYY-MM-dd)-取DECLAREDATE"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "结束日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式(YYYY-MM-dd)-取DECLAREDATE"
-            },
-            {
-              "code": "ABS_NAME",
-              "name": "资产支持证券名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "资产支持证券名称 (精度：200)"
-            },
-            {
-              "code": "ITEM_NAME",
-              "name": "项目名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目名称 (精度：200)"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "FUND_SNAME",
-              "name": "基金简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金简称 (精度：100)"
-            },
-            {
-              "code": "ABS_NAME",
-              "name": "资产支持证券名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "资产支持证券名称 (精度：200)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ITEM_NAME",
-              "name": "项目名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目名称 (精度：200)"
-            },
-            {
-              "code": "INDU_NAME",
-              "name": "项目行业",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目行业 (精度：30)"
-            },
-            {
-              "code": "ITEM_TYPE",
-              "name": "项目类型",
-              "type": "INT",
-              "required": "否",
-              "description": "1-交通基础设施;2-能源基础设施;3-市政基础设施;4-生态环保基础设施;5-仓储物流基础设施;6-园区基础设施;7-新型基础设施;8-租赁住房;9-水利设施;10-文化旅游基础设施;11-消费基础设施;12-养老设施;13-其他"
-            },
-            {
-              "code": "ITEM_CLS",
-              "name": "项目性质",
-              "type": "INT",
-              "required": "否",
-              "description": "1-产权类;2-特许经营权类"
-            },
-            {
-              "code": "ITEM_ADDR",
-              "name": "项目地址",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目地址 (精度：1000)"
-            },
-            {
-              "code": "LAND_TYPE",
-              "name": "用地性质",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "用地性质 (精度：200)"
-            },
-            {
-              "code": "USE_YEAR",
-              "name": "使用年限",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "使用年限 [单位：年] (精度：9,2)"
-            },
-            {
-              "code": "RMN_TERM_YEAR",
-              "name": "剩余年限",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "剩余年限 [单位：年] (精度：9,2)"
-            },
-            {
-              "code": "USE_STARTDATE",
-              "name": "使用起始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "USE_ENDDATE",
-              "name": "使用截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "SPV_NAME",
-              "name": "项目公司名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目公司名称 (精度：500)"
-            },
-            {
-              "code": "ASES_VAL",
-              "name": "评估价值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "评估价值 [单位：元] (精度：18,4)"
-            },
-            {
-              "code": "ASES_VAL_DATE",
-              "name": "评估价值基准日",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "VAL_TYPE",
-              "name": "估价方法",
-              "type": "INT",
-              "required": "否",
-              "description": "1-比较法;2-收益法;3-成本法;4-假设开发法"
-            },
-            {
-              "code": "GRO_INV_TOT",
-              "name": "决算总投资",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "决算总投资 [单位：元] (精度：18,4)"
-            },
-            {
-              "code": "CONST_CONT_SCALE",
-              "name": "建设内容和规模",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "建设内容和规模 (精度：MAX)"
-            },
-            {
-              "code": "ITEM_INCM",
-              "name": "项目收入来源",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目收入来源 (精度：1000)"
-            },
-            {
-              "code": "BNDRY",
-              "name": "资产范围",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "资产范围 (精度：MAX)"
-            },
-            {
-              "code": "PRD_CONTENT",
-              "name": "产品或服务内容",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "产品或服务内容 (精度：500)"
-            },
-            {
-              "code": "OPE_STARTDATE",
-              "name": "项目运营开始时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "STA_DATE",
-              "name": "项目开工日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "COM_DATE",
-              "name": "项目竣工日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）；"
-            },
-            {
-              "code": "REMARK",
-              "name": "补充说明",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "补充说明 (精度：1000)"
-            },
-            {
-              "code": "ASSET_TYPE",
-              "name": "募集标识",
-              "type": "INT",
-              "required": "否",
-              "description": "0-资产置换/调入资产（特殊变更）;1-首发资产;2-第一次扩募资产;3-第二次扩募资产;4-第三次扩募资产"
-            },
-            {
-              "code": "ASSET_STATUS",
-              "name": "资产权属状态",
-              "type": "INT",
-              "required": "否",
-              "description": "1-权属清晰、无限制(正常运营);2-存在抵押/质押;3-存在查封/冻结/限制转让;4-权属瑕疵、证照不全;5-租赁类资产(非自有产权);6-特许经营权(无不动产产权);7-资产拟处置/拟剥离"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            }
-          ]
-        },
-        "reits_proj_cf": {
-          "name": "项目运营现金流",
-          "description": "获取REITS基金定期报告中每个不动产项目的营业收入和运营净收益的实际值、预测数及完成度(中报、年报)",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "SOURCE",
-              "name": "信息来源",
-              "type": "INT",
-              "required": "否",
-              "description": "3-中报;6-年报"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "STARTDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "STARTDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SOURCE",
-              "name": "信息来源",
-              "type": "INT",
-              "required": "否",
-              "description": "3-中报;6-年报"
-            },
-            {
-              "code": "ITEM_NUM",
-              "name": "项目序号",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "PROJECT_NAME",
-              "name": "不动产项目名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "不动产项目名称 (精度：400)"
-            },
-            {
-              "code": "REV_ACT",
-              "name": "本期营业收入实际值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "本期营业收入实际值 [单位：元] (精度：18,2)"
-            },
-            {
-              "code": "REV_FCT",
-              "name": "本期营业收入预测数",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "本期营业收入预测数 [单位：元] (精度：18,2)"
-            },
-            {
-              "code": "REV_RT",
-              "name": "营业收入完成度",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "营业收入完成度 [单位：%] (精度：9,4)"
-            },
-            {
-              "code": "NOP_ACT",
-              "name": "本期运营净收益实际值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "本期运营净收益实际值 [单位：元] (精度：18,2)"
-            },
-            {
-              "code": "NOP_FCT",
-              "name": "本期运营净收益预测数",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "本期运营净收益预测数 [单位：元] (精度：18,2)"
-            },
-            {
-              "code": "NOP_RT",
-              "name": "运营净收益完成度",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "运营净收益完成度 [单位：%] (精度：9,4)"
-            }
-          ]
-        },
-        "reits_asset_bal": {
-          "name": "底层资产负债分析",
-          "description": "获取REITS基金业绩报告重要资产项目公司的主要资产负债信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "SOURCE",
-              "name": "信息来源",
-              "type": "INT",
-              "required": "否",
-              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取ENDDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SOURCE",
-              "name": "信息来源",
-              "type": "INT",
-              "required": "否",
-              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
-            },
-            {
-              "code": "ITEM_NUM",
-              "name": "项目序号",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序；"
-            },
-            {
-              "code": "COM_CNAME",
-              "name": "项目公司名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "项目公司名称 (精度：1000)"
-            },
-            {
-              "code": "ITEM",
-              "name": "科目名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "科目名称 (精度：400)"
-            },
-            {
-              "code": "END_VAL",
-              "name": "金额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "金额 [单位：元] (精度：18,2)"
-            },
-            {
-              "code": "YOY_CHNG",
-              "name": "较上年末变动",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "较上年末变动 [单位：%] (精度：9,2)"
-            }
-          ]
-        },
-        "reits_asset_inc": {
-          "name": "底层营收分析",
-          "description": "获取REITS基金业绩报告中披露的基础设施项目公司的营业收入分析数据",
+        "reits_asset_cost": {
+          "name": "底层成本费用分析",
+          "description": "获取REITS基金业绩报告中披露的基础设施项目公司的营业成本及主要费用分析数据",
           "inputParams": [
             {
               "code": "FUND_CODE",
@@ -21779,9 +18388,9 @@
             }
           ]
         },
-        "reits_asset_cost": {
-          "name": "底层成本费用分析",
-          "description": "获取REITS基金业绩报告中披露的基础设施项目公司的营业成本及主要费用分析数据",
+        "reits_asset_inc": {
+          "name": "底层营收分析",
+          "description": "获取REITS基金业绩报告中披露的基础设施项目公司的营业收入分析数据",
           "inputParams": [
             {
               "code": "FUND_CODE",
@@ -21912,6 +18521,527 @@
               "description": "同比变化 [单位：%] (精度：9,2)"
             }
           ]
+        },
+        "reits_asset_bal": {
+          "name": "底层资产负债分析",
+          "description": "获取REITS基金业绩报告重要资产项目公司的主要资产负债信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "SOURCE",
+              "name": "信息来源",
+              "type": "INT",
+              "required": "否",
+              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SOURCE",
+              "name": "信息来源",
+              "type": "INT",
+              "required": "否",
+              "description": "1-第一季度报;2-第二季度报;3-中报;4-第三季度报;5-第四季度报;6-年报"
+            },
+            {
+              "code": "ITEM_NUM",
+              "name": "项目序号",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；"
+            },
+            {
+              "code": "COM_CNAME",
+              "name": "项目公司名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目公司名称 (精度：1000)"
+            },
+            {
+              "code": "ITEM",
+              "name": "科目名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "科目名称 (精度：400)"
+            },
+            {
+              "code": "END_VAL",
+              "name": "金额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "金额 [单位：元] (精度：18,2)"
+            },
+            {
+              "code": "YOY_CHNG",
+              "name": "较上年末变动",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "较上年末变动 [单位：%] (精度：9,2)"
+            }
+          ]
+        },
+        "reits_proj_cf": {
+          "name": "项目运营现金流",
+          "description": "获取REITS基金定期报告中每个不动产项目的营业收入和运营净收益的实际值、预测数及完成度(中报、年报)",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "SOURCE",
+              "name": "信息来源",
+              "type": "INT",
+              "required": "否",
+              "description": "3-中报;6-年报"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "STARTDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取ENDDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "STARTDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SOURCE",
+              "name": "信息来源",
+              "type": "INT",
+              "required": "否",
+              "description": "3-中报;6-年报"
+            },
+            {
+              "code": "ITEM_NUM",
+              "name": "项目序号",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序；"
+            },
+            {
+              "code": "PROJECT_NAME",
+              "name": "不动产项目名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "不动产项目名称 (精度：400)"
+            },
+            {
+              "code": "REV_ACT",
+              "name": "本期营业收入实际值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "本期营业收入实际值 [单位：元] (精度：18,2)"
+            },
+            {
+              "code": "REV_FCT",
+              "name": "本期营业收入预测数",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "本期营业收入预测数 [单位：元] (精度：18,2)"
+            },
+            {
+              "code": "REV_RT",
+              "name": "营业收入完成度",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "营业收入完成度 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "NOP_ACT",
+              "name": "本期运营净收益实际值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "本期运营净收益实际值 [单位：元] (精度：18,2)"
+            },
+            {
+              "code": "NOP_FCT",
+              "name": "本期运营净收益预测数",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "本期运营净收益预测数 [单位：元] (精度：18,2)"
+            },
+            {
+              "code": "NOP_RT",
+              "name": "运营净收益完成度",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "运营净收益完成度 [单位：%] (精度：9,4)"
+            }
+          ]
+        },
+        "reits_und_asset": {
+          "name": "底层资产信息",
+          "description": "获取REITS基金底层资产相关信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式(YYYY-MM-dd)-取DECLAREDATE"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式(YYYY-MM-dd)-取DECLAREDATE"
+            },
+            {
+              "code": "ABS_NAME",
+              "name": "资产支持证券名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "资产支持证券名称 (精度：200)"
+            },
+            {
+              "code": "ITEM_NAME",
+              "name": "项目名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目名称 (精度：200)"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "FUND_SNAME",
+              "name": "基金简称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金简称 (精度：100)"
+            },
+            {
+              "code": "ABS_NAME",
+              "name": "资产支持证券名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "资产支持证券名称 (精度：200)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ITEM_NAME",
+              "name": "项目名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目名称 (精度：200)"
+            },
+            {
+              "code": "INDU_NAME",
+              "name": "项目行业",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目行业 (精度：30)"
+            },
+            {
+              "code": "ITEM_TYPE",
+              "name": "项目类型",
+              "type": "INT",
+              "required": "否",
+              "description": "1-交通基础设施;2-能源基础设施;3-市政基础设施;4-生态环保基础设施;5-仓储物流基础设施;6-园区基础设施;7-新型基础设施;8-租赁住房;9-水利设施;10-文化旅游基础设施;11-消费基础设施;12-养老设施;13-其他"
+            },
+            {
+              "code": "ITEM_CLS",
+              "name": "项目性质",
+              "type": "INT",
+              "required": "否",
+              "description": "1-产权类;2-特许经营权类"
+            },
+            {
+              "code": "ITEM_ADDR",
+              "name": "项目地址",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目地址 (精度：1000)"
+            },
+            {
+              "code": "LAND_TYPE",
+              "name": "用地性质",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "用地性质 (精度：200)"
+            },
+            {
+              "code": "USE_YEAR",
+              "name": "使用年限",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "使用年限 [单位：年] (精度：9,2)"
+            },
+            {
+              "code": "RMN_TERM_YEAR",
+              "name": "剩余年限",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "剩余年限 [单位：年] (精度：9,2)"
+            },
+            {
+              "code": "USE_STARTDATE",
+              "name": "使用起始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "USE_ENDDATE",
+              "name": "使用截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "SPV_NAME",
+              "name": "项目公司名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目公司名称 (精度：500)"
+            },
+            {
+              "code": "ASES_VAL",
+              "name": "评估价值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "评估价值 [单位：元] (精度：18,4)"
+            },
+            {
+              "code": "ASES_VAL_DATE",
+              "name": "评估价值基准日",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "VAL_TYPE",
+              "name": "估价方法",
+              "type": "INT",
+              "required": "否",
+              "description": "1-比较法;2-收益法;3-成本法;4-假设开发法"
+            },
+            {
+              "code": "GRO_INV_TOT",
+              "name": "决算总投资",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "决算总投资 [单位：元] (精度：18,4)"
+            },
+            {
+              "code": "CONST_CONT_SCALE",
+              "name": "建设内容和规模",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "建设内容和规模 (精度：MAX)"
+            },
+            {
+              "code": "ITEM_INCM",
+              "name": "项目收入来源",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "项目收入来源 (精度：1000)"
+            },
+            {
+              "code": "BNDRY",
+              "name": "资产范围",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "资产范围 (精度：MAX)"
+            },
+            {
+              "code": "PRD_CONTENT",
+              "name": "产品或服务内容",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "产品或服务内容 (精度：500)"
+            },
+            {
+              "code": "OPE_STARTDATE",
+              "name": "项目运营开始时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "STA_DATE",
+              "name": "项目开工日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "COM_DATE",
+              "name": "项目竣工日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）；"
+            },
+            {
+              "code": "REMARK",
+              "name": "补充说明",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "补充说明 (精度：1000)"
+            },
+            {
+              "code": "ASSET_TYPE",
+              "name": "募集标识",
+              "type": "INT",
+              "required": "否",
+              "description": "0-资产置换/调入资产（特殊变更）;1-首发资产;2-第一次扩募资产;3-第二次扩募资产;4-第三次扩募资产"
+            },
+            {
+              "code": "ASSET_STATUS",
+              "name": "资产权属状态",
+              "type": "INT",
+              "required": "否",
+              "description": "1-权属清晰、无限制(正常运营);2-存在抵押/质押;3-存在查封/冻结/限制转让;4-权属瑕疵、证照不全;5-租赁类资产(非自有产权);6-特许经营权(无不动产产权);7-资产拟处置/拟剥离"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            }
+          ]
         }
       }
     },
@@ -21942,6 +19072,13 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "可多选组合，包含大科技、新能源、芯片半导体、人工智能、有色金属、医药卫生、大消费、农牧渔、资源能源、 电力、证券保险、国防军工、计算机、汽车、碳中和、智能制造、国企央企、机械设备、 银行、食品饮料、通信、ESG、家用电器、新能源车、数字经济、创新药、传媒、 金融科技、基建工程、云计算、物联网、新材料、化工、区域经济、高端装备、航天航空、 大金融、房地产、交通运输、公用事业、电子制造"
+            },
+            {
+              "code": "end_date",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
             }
           ],
           "fields": [
@@ -21992,6 +19129,13 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "0-全部权益；1-宽基； 2-行业； 3-主题；4-风格；hs300-沪深300；zz500-中证500；zz1000-中证1000；kc50-科创板50"
+            },
+            {
+              "code": "end_date",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
             }
           ],
           "fields": [
@@ -24261,6 +21405,105 @@
     "gmryxgjg": {
       "categoryName": "相关机构",
       "interfaces": {
+        "fund_mgr_share": {
+          "name": "管理人股东明细",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-DD）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-DD）;取ENDDATE"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "结束日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-DD）;取ENDDATE"
+            },
+            {
+              "code": "HOLDER_RANK",
+              "name": "股东名次",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "股东名次"
+            },
+            {
+              "code": "FND_MNG_SEQ",
+              "name": "基金管理人序号",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金管理人序号"
+            }
+          ],
+          "fields": [
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-DD）"
+            },
+            {
+              "code": "HOLDER_RANK",
+              "name": "股东名次",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序"
+            },
+            {
+              "code": "FND_MNG_SEQ",
+              "name": "基金管理人序号",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序"
+            },
+            {
+              "code": "FND_MNG_CODE",
+              "name": "基金管理人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "基金管理人代码"
+            },
+            {
+              "code": "FUND_MNG_NAME",
+              "name": "基金管理人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金管理人名称 (精度：200)"
+            },
+            {
+              "code": "HOLDER_CODE",
+              "name": "股东代码",
+              "type": "INT",
+              "required": "否",
+              "description": "股东代码"
+            },
+            {
+              "code": "HOLDER_NAME",
+              "name": "股东名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "股东名称 (精度：200)"
+            },
+            {
+              "code": "SHR_PCT",
+              "name": "持股比例",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "支持排序 [单位：%] (精度：7,4)"
+            }
+          ]
+        },
         "fund_rel_org": {
           "name": "基金相关机构",
           "description": "**提示信息",
@@ -24371,105 +21614,6 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "变更原因 (精度：400)"
-            }
-          ]
-        },
-        "fund_mgr_share": {
-          "name": "管理人股东明细",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-DD）"
-            },
-            {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-DD）;取ENDDATE"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "结束日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-DD）;取ENDDATE"
-            },
-            {
-              "code": "HOLDER_RANK",
-              "name": "股东名次",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股东名次"
-            },
-            {
-              "code": "FND_MNG_SEQ",
-              "name": "基金管理人序号",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金管理人序号"
-            }
-          ],
-          "fields": [
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-DD）"
-            },
-            {
-              "code": "HOLDER_RANK",
-              "name": "股东名次",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序"
-            },
-            {
-              "code": "FND_MNG_SEQ",
-              "name": "基金管理人序号",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序"
-            },
-            {
-              "code": "FND_MNG_CODE",
-              "name": "基金管理人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "基金管理人代码"
-            },
-            {
-              "code": "FUND_MNG_NAME",
-              "name": "基金管理人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金管理人名称 (精度：200)"
-            },
-            {
-              "code": "HOLDER_CODE",
-              "name": "股东代码",
-              "type": "INT",
-              "required": "否",
-              "description": "股东代码"
-            },
-            {
-              "code": "HOLDER_NAME",
-              "name": "股东名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "股东名称 (精度：200)"
-            },
-            {
-              "code": "SHR_PCT",
-              "name": "持股比例",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "支持排序 [单位：%] (精度：7,4)"
             }
           ]
         },
@@ -31315,6 +28459,119 @@
             }
           ]
         },
+        "fund_self_trade": {
+          "name": "管理人交易明细",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "TRADETYPE",
+              "name": "交易类型",
+              "type": "INT",
+              "required": "否",
+              "description": "1-认购;2-申购;3-赎回"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "DATETIME",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "TRADETYPE",
+              "name": "交易类型",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;1-认购;2-申购;3-赎回"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "DATETIME",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "TRD_SAR",
+              "name": "交易份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "交易份额 [单位：份] (精度：22,4)"
+            },
+            {
+              "code": "TRD_CAP",
+              "name": "交易金额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "交易金额 (精度：18,2)"
+            },
+            {
+              "code": "VAL_UNIT",
+              "name": "金额单位",
+              "type": "INT",
+              "required": "否",
+              "description": "4-万元;5-元"
+            },
+            {
+              "code": "TRADE_FEE_RMK",
+              "name": "交易费用说明",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "交易费用说明 (精度：400)"
+            },
+            {
+              "code": "MANA_CODE",
+              "name": "基金管理人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "基金管理人代码"
+            }
+          ]
+        },
         "fund_self_inv": {
           "name": "管理人自营投资",
           "description": "**提示信息",
@@ -31460,119 +28717,6 @@
               "type": "INT",
               "required": "否",
               "description": "支持排序;1-是;2-否"
-            }
-          ]
-        },
-        "fund_self_trade": {
-          "name": "管理人交易明细",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "TRADETYPE",
-              "name": "交易类型",
-              "type": "INT",
-              "required": "否",
-              "description": "1-认购;2-申购;3-赎回"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "TRADETYPE",
-              "name": "交易类型",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;1-认购;2-申购;3-赎回"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "TRD_SAR",
-              "name": "交易份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交易份额 [单位：份] (精度：22,4)"
-            },
-            {
-              "code": "TRD_CAP",
-              "name": "交易金额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "交易金额 (精度：18,2)"
-            },
-            {
-              "code": "VAL_UNIT",
-              "name": "金额单位",
-              "type": "INT",
-              "required": "否",
-              "description": "4-万元;5-元"
-            },
-            {
-              "code": "TRADE_FEE_RMK",
-              "name": "交易费用说明",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "交易费用说明 (精度：400)"
-            },
-            {
-              "code": "MANA_CODE",
-              "name": "基金管理人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "基金管理人代码"
             }
           ]
         },
@@ -31773,140 +28917,6 @@
             }
           ]
         },
-        "fund_main_hold": {
-          "name": "主要持有人",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "0-其它;1-机构;2-个人"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "HOLDER_RANK",
-              "name": "持有人名次",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SOURCE_MARK",
-              "name": "信息来源",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
-            },
-            {
-              "code": "HOLDER_NAME",
-              "name": "持有人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "持有人名称 (精度：400)"
-            },
-            {
-              "code": "HOLDER_CODE",
-              "name": "持有人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "HOLDER_CLS_MARK",
-              "name": "持有人类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
-            },
-            {
-              "code": "HLD_VOL",
-              "name": "持有份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额 [单位：份] (精度：18,2)"
-            },
-            {
-              "code": "HLD_PCT",
-              "name": "持有比例",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例 [单位：%] (精度：9,4)"
-            },
-            {
-              "code": "HLD_VOL_CHNG",
-              "name": "持有份额增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有份额增减 [单位：份] (精度：18,0)"
-            },
-            {
-              "code": "HLD_PCT_CHNG",
-              "name": "持有比例增减",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "持有比例增减 [单位：%] (精度：9,4)"
-            }
-          ]
-        },
         "fund_hold_meet": {
           "name": "持有人大会",
           "description": "**提示信息",
@@ -32088,6 +29098,140 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "发起人持有总份额 [单位：份] (精度：18,0)"
+            }
+          ]
+        },
+        "fund_main_hold": {
+          "name": "主要持有人",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "0-其它;1-机构;2-个人"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "HOLDER_RANK",
+              "name": "持有人名次",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SOURCE_MARK",
+              "name": "信息来源",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;3-中报;6-年报; 8-上市公告书;12-基金扩募书 (精度：30)"
+            },
+            {
+              "code": "HOLDER_NAME",
+              "name": "持有人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "持有人名称 (精度：400)"
+            },
+            {
+              "code": "HOLDER_CODE",
+              "name": "持有人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "HOLDER_CLS_MARK",
+              "name": "持有人类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;0-其它;1-机构;2-个人 (精度：20)"
+            },
+            {
+              "code": "HLD_VOL",
+              "name": "持有份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额 [单位：份] (精度：18,2)"
+            },
+            {
+              "code": "HLD_PCT",
+              "name": "持有比例",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例 [单位：%] (精度：9,4)"
+            },
+            {
+              "code": "HLD_VOL_CHNG",
+              "name": "持有份额增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有份额增减 [单位：份] (精度：18,0)"
+            },
+            {
+              "code": "HLD_PCT_CHNG",
+              "name": "持有比例增减",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "持有比例增减 [单位：%] (精度：9,4)"
             }
           ]
         },
@@ -35680,154 +32824,6 @@
     "gmjjjyhq": {
       "categoryName": "交易行情",
       "interfaces": {
-        "fund_block_trade": {
-          "name": "大宗交易数据",
-          "description": "**提示信息",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码 (精度：12)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_TRADEDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取TRADEDATE字段"
-            },
-            {
-              "code": "ED_TRADEDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取TRADEDATE字段"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "1-深圳证券交易所;2-上海证券交易所;105-北京证券交易所"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序; (精度：12)"
-            },
-            {
-              "code": "TRADEDATE",
-              "name": "交易日期",
-              "type": "DATETIME",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ITEM_NUM",
-              "name": "序号",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "SEC_SNAME",
-              "name": "基金简称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金简称 (精度：30)"
-            },
-            {
-              "code": "CURNCY_CLS",
-              "name": "货币种类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;1-人民币;2-港币;3-美元 (精度：20)"
-            },
-            {
-              "code": "SEC_TYPE",
-              "name": "证券类别",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;1-股票;2-债券;3-基金 (精度：20)"
-            },
-            {
-              "code": "TRADE_MKT",
-              "name": "交易市场",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;1-深圳证券交易所;2-上海证券交易所;105-北京证券交易所 (精度：50)"
-            },
-            {
-              "code": "WRT_PRC",
-              "name": "成交价格",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "成交价格 [单位：元] (精度：9,4)"
-            },
-            {
-              "code": "TVOLUME",
-              "name": "成交数量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "成交数量 [单位：万股/万份] (精度：18,4)"
-            },
-            {
-              "code": "TVALUE",
-              "name": "成交金额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "成交金额 [单位：万元] (精度：18,4)"
-            },
-            {
-              "code": "BUY_BRANCH",
-              "name": "买方营业部",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "买方营业部 (精度：100)"
-            },
-            {
-              "code": "B_ORG_CODE",
-              "name": "买方营业部机构代码",
-              "type": "INT",
-              "required": "否",
-              "description": "买方营业部机构代码"
-            },
-            {
-              "code": "SELL_BRANCH",
-              "name": "卖方营业部",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "卖方营业部 (精度：100)"
-            },
-            {
-              "code": "S_ORG_CODE",
-              "name": "卖方营业部机构代码",
-              "type": "INT",
-              "required": "否",
-              "description": "卖方营业部机构代码"
-            },
-            {
-              "code": "IS_SPEC",
-              "name": "是否为专场",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "是否为专场 (精度：8)"
-            }
-          ]
-        },
         "fund_exc_mkt": {
           "name": "场内基金行情",
           "description": "**提示信息",
@@ -36113,6 +33109,154 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "流通份额 [单位：份] (精度：18,0)"
+            }
+          ]
+        },
+        "fund_block_trade": {
+          "name": "大宗交易数据",
+          "description": "**提示信息",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码 (精度：12)"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_TRADEDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取TRADEDATE字段"
+            },
+            {
+              "code": "ED_TRADEDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取TRADEDATE字段"
+            },
+            {
+              "code": "TRADE_MKT",
+              "name": "交易市场",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "1-深圳证券交易所;2-上海证券交易所;105-北京证券交易所"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序; (精度：12)"
+            },
+            {
+              "code": "TRADEDATE",
+              "name": "交易日期",
+              "type": "DATETIME",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ITEM_NUM",
+              "name": "序号",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "SEC_SNAME",
+              "name": "基金简称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金简称 (精度：30)"
+            },
+            {
+              "code": "CURNCY_CLS",
+              "name": "货币种类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;1-人民币;2-港币;3-美元 (精度：20)"
+            },
+            {
+              "code": "SEC_TYPE",
+              "name": "证券类别",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;1-股票;2-债券;3-基金 (精度：20)"
+            },
+            {
+              "code": "TRADE_MKT",
+              "name": "交易市场",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;1-深圳证券交易所;2-上海证券交易所;105-北京证券交易所 (精度：50)"
+            },
+            {
+              "code": "WRT_PRC",
+              "name": "成交价格",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "成交价格 [单位：元] (精度：9,4)"
+            },
+            {
+              "code": "TVOLUME",
+              "name": "成交数量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "成交数量 [单位：万股/万份] (精度：18,4)"
+            },
+            {
+              "code": "TVALUE",
+              "name": "成交金额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "成交金额 [单位：万元] (精度：18,4)"
+            },
+            {
+              "code": "BUY_BRANCH",
+              "name": "买方营业部",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "买方营业部 (精度：100)"
+            },
+            {
+              "code": "B_ORG_CODE",
+              "name": "买方营业部机构代码",
+              "type": "INT",
+              "required": "否",
+              "description": "买方营业部机构代码"
+            },
+            {
+              "code": "SELL_BRANCH",
+              "name": "卖方营业部",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "卖方营业部 (精度：100)"
+            },
+            {
+              "code": "S_ORG_CODE",
+              "name": "卖方营业部机构代码",
+              "type": "INT",
+              "required": "否",
+              "description": "卖方营业部机构代码"
+            },
+            {
+              "code": "IS_SPEC",
+              "name": "是否为专场",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "是否为专场 (精度：8)"
             }
           ]
         },
@@ -37046,6 +34190,126 @@
     "gmjjggzx": {
       "categoryName": "公告资讯",
       "interfaces": {
+        "fund_sec_notice": {
+          "name": "基金特别提示",
+          "description": "获取基金的交易提示信息，例如：停牌提示、基金发行上市提示、基金权益登记提示、基金分红派息提示、基金除权除息提示等。",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "HINT_DATE",
+              "name": "提示日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_HINT_DATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）;取HINT_DATE字段"
+            },
+            {
+              "code": "ED_HINT_DATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）;取HINT_DATE字段"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
+            },
+            {
+              "code": "HINT_DATE",
+              "name": "提示日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ORDERID",
+              "name": "序号",
+              "type": "INT",
+              "required": "否",
+              "description": "序号"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公布日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "ESP_HINT",
+              "name": "特别提示内容",
+              "type": "TEXT",
+              "required": "否",
+              "description": "特别提示内容"
+            },
+            {
+              "code": "STP_DATE",
+              "name": "停牌时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd hh:mm:ss）"
+            },
+            {
+              "code": "OPN_DATE",
+              "name": "复牌时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd hh:mm:ss）"
+            },
+            {
+              "code": "STP_LNG",
+              "name": "停牌期限",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "停牌期限 (精度：50)"
+            },
+            {
+              "code": "HINT_TYPE_NAME",
+              "name": "提示类型名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "提示类型名称 (精度：200)"
+            },
+            {
+              "code": "STP_TYPE_NAME",
+              "name": "停牌类属名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "停牌类属名称 (精度：200)"
+            },
+            {
+              "code": "STP_KEY_NAME",
+              "name": "停牌主题词",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "停牌主题词 (精度：200)"
+            },
+            {
+              "code": "CHNG_TYPE",
+              "name": "涨跌幅限制类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "涨跌幅限制类型 (精度：50)"
+            }
+          ]
+        },
         "fund_ann": {
           "name": "基金公告",
           "description": "获取基金公告数据",
@@ -37227,126 +34491,6 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "附件路径 (精度：255)"
-            }
-          ]
-        },
-        "fund_sec_notice": {
-          "name": "基金特别提示",
-          "description": "获取基金的交易提示信息，例如：停牌提示、基金发行上市提示、基金权益登记提示、基金分红派息提示、基金除权除息提示等。",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "HINT_DATE",
-              "name": "提示日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_HINT_DATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）;取HINT_DATE字段"
-            },
-            {
-              "code": "ED_HINT_DATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）;取HINT_DATE字段"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔 (精度：12)"
-            },
-            {
-              "code": "HINT_DATE",
-              "name": "提示日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ORDERID",
-              "name": "序号",
-              "type": "INT",
-              "required": "否",
-              "description": "序号"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公布日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "ESP_HINT",
-              "name": "特别提示内容",
-              "type": "TEXT",
-              "required": "否",
-              "description": "特别提示内容"
-            },
-            {
-              "code": "STP_DATE",
-              "name": "停牌时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd hh:mm:ss）"
-            },
-            {
-              "code": "OPN_DATE",
-              "name": "复牌时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd hh:mm:ss）"
-            },
-            {
-              "code": "STP_LNG",
-              "name": "停牌期限",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "停牌期限 (精度：50)"
-            },
-            {
-              "code": "HINT_TYPE_NAME",
-              "name": "提示类型名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "提示类型名称 (精度：200)"
-            },
-            {
-              "code": "STP_TYPE_NAME",
-              "name": "停牌类属名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "停牌类属名称 (精度：200)"
-            },
-            {
-              "code": "STP_KEY_NAME",
-              "name": "停牌主题词",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "停牌主题词 (精度：200)"
-            },
-            {
-              "code": "CHNG_TYPE",
-              "name": "涨跌幅限制类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "涨跌幅限制类型 (精度：50)"
             }
           ]
         }
