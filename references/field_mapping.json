@@ -4336,7 +4336,7 @@
               "description": "格式(YYYY-MM-dd)"
             },
             {
-              "code": "SE_DECLAREDATE",
+              "code": "SD_DECLAREDATE",
               "name": "公告开始日期",
               "type": "VARCHAR",
               "required": "否",
@@ -26460,7 +26460,7 @@
               "description": "1-深圳证券交易所;2-上海证券交易所"
             },
             {
-              "code": "SE_TRADEDATE",
+              "code": "SD_TRADEDATE",
               "name": "开始日期",
               "type": "VARCHAR",
               "required": "否",
@@ -27336,7 +27336,7 @@
               "description": "格式(YYYY-MM-dd)"
             },
             {
-              "code": "SE_DECLAREDATE",
+              "code": "SD_DECLAREDATE",
               "name": "研报开始日期",
               "type": "VARCHAR",
               "required": "否",
@@ -27695,7 +27695,7 @@
               "description": "调研日期"
             },
             {
-              "code": "SE_SURVEY_DATE",
+              "code": "SD_SURVEY_DATE",
               "name": "调研开始日期",
               "type": "DATETIME",
               "required": "否",
