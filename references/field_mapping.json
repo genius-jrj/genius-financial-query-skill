@@ -1,9 +1,9 @@
 {
   "version": "4.0.0",
-  "updateTime": "2026-09-10",
+  "updateTime": "2026-09-14",
   "description": "金融数据接口字段映射表，包含所有接口的完整字段信息",
   "categoryMapping": {
-    "gpsj": "股票数据"
+    "sshq": "实时行情"
   },
   "categoryHierarchy": {
     "jcsj": {
@@ -211,10 +211,530 @@
       "parent": null
     }
   },
-  "totalInterfaces": 241,
-  "totalInputParams": 1033,
-  "totalOutputFields": 3553,
+  "totalInterfaces": 242,
+  "totalInputParams": 1034,
+  "totalOutputFields": 3557,
   "interfaces": {
+    "sshq": {
+      "categoryName": "实时行情",
+      "interfaces": {
+        "tradereord": {
+          "name": "成交明细",
+          "description": "用于查询成交明细数据，获取成交记录，返回该证券当日最新的 20 笔成交，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID筛选或查询。返回成交序号(依次递增)、成交时间(HHMMSS)、成交价、成交量(股)、成交额(元)、方向、交易日期(YYYMMDD)等字段。不支持北交所数据",
+          "inputParams": [
+            {
+              "code": "sid",
+              "name": "证券唯一 ID",
+              "type": "INT",
+              "required": "否",
+              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"sid\": 1508000}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
+            }
+          ],
+          "fields": [
+            {
+              "code": "seq",
+              "name": "成交序号",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "依次递增"
+            },
+            {
+              "code": "tm",
+              "name": "成交时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "HHMMSS"
+            },
+            {
+              "code": "px",
+              "name": "成交价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "成交价"
+            },
+            {
+              "code": "vol",
+              "name": "成交量",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "成交量 [单位：股]"
+            },
+            {
+              "code": "amt",
+              "name": "成交额",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "成交额 [单位：元]"
+            },
+            {
+              "code": "dir",
+              "name": "方向",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "方向：0=平盘, 1=主动卖出（内盘）, 2=主动买入（外盘）"
+            },
+            {
+              "code": "td",
+              "name": "交易日期",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "YYYMMDD"
+            }
+          ]
+        },
+        "rtmin": {
+          "name": "分时线",
+          "description": "用于查询分时线数据，获取当日分时走势数据，每 1 分钟一个采样点，共 0-240 个点，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID筛选或查询。返回分时下标(每日从 0 开始递增，起始下标 [0-240])、成交时间(HHMMSS)、当前价、该分钟成交量(股)、该分钟成交额(元)、截至该分钟的均价(元)等字段。不支持北交所数据。",
+          "inputParams": [
+            {
+              "code": "sid",
+              "name": "证券唯一 ID",
+              "type": "INT",
+              "required": "否",
+              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"sid\": 1508000}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
+            }
+          ],
+          "fields": [
+            {
+              "code": "idx",
+              "name": "分时下标",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "每日从 0 开始递增，起始下标 [0-240]"
+            },
+            {
+              "code": "tm",
+              "name": "成交时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "HHMMSS"
+            },
+            {
+              "code": "px",
+              "name": "当前价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "当前价"
+            },
+            {
+              "code": "vol",
+              "name": "该分钟成交量",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "该分钟成交量 [单位：股]"
+            },
+            {
+              "code": "amt",
+              "name": "该分钟成交额",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "该分钟成交额 [单位：元]"
+            },
+            {
+              "code": "ave",
+              "name": "截至该分钟的均价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "截至该分钟的均价 [单位：元]"
+            }
+          ]
+        },
+        "quot-kline": {
+          "name": "K线行情",
+          "description": "用于查询K线行情数据，获取分钟/日 / 周 / 月 K 线数据。当日 K 线在盘中实时更新，最新一根会随行情推进不断刷新，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID、K 线类型、起始日期(必填项，起始日期yyyyMMdd)筛选或查询。返回日期(YYYYMMDD)、成交时间(日/周/月交易日,1分钟分时返回带分时时间)、昨收价(元)、开盘价(元)、最高价(元)、最低价(元)、收盘价(元)、成交量(股)、成交额(元)等字段。不支持北交所数据。",
+          "inputParams": [
+            {
+              "code": "securityId",
+              "name": "证券唯一 ID",
+              "type": "INT",
+              "required": "否",
+              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所，则组装为1508011；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
+            },
+            {
+              "code": "type",
+              "name": "K 线类型",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "必填项；1minkline-1分钟；day-日 K（不复权）;week-周 K（不复权）;month-月 K（不复权）"
+            },
+            {
+              "code": "range.begin",
+              "name": "起始日期",
+              "type": "INT",
+              "required": "否",
+              "description": "必填项，起始日期yyyyMMdd"
+            }
+          ],
+          "fields": [
+            {
+              "code": "nIndex",
+              "name": "日期",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "YYYYMMDD"
+            },
+            {
+              "code": "nTime",
+              "name": "成交时间",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "日/周/月交易日,1分钟分时返回带分时时间"
+            },
+            {
+              "code": "nPreClosePx",
+              "name": "昨收价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "昨收价 [单位：元]"
+            },
+            {
+              "code": "nOpenPx",
+              "name": "开盘价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "开盘价 [单位：元]"
+            },
+            {
+              "code": "nHighPx",
+              "name": "最高价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "最高价 [单位：元]"
+            },
+            {
+              "code": "nLowPx",
+              "name": "最低价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "最低价 [单位：元]"
+            },
+            {
+              "code": "nLastPx",
+              "name": "收盘价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "收盘价 [单位：元]"
+            },
+            {
+              "code": "llVolume",
+              "name": "成交量",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "成交量 [单位：股]"
+            },
+            {
+              "code": "llValue",
+              "name": "成交额",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "成交额 [单位：元]"
+            }
+          ]
+        },
+        "hqs": {
+          "name": "行情快照",
+          "description": "用于查询行情快照数据，获取证券代码实时的最新价、涨跌幅、五档盘口、交易明细等数据，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按sid 数组、行情数据块类型筛选或查询。返回精简快照(精简快照数据主体)、交易状态、最新价(元)、涨跌额(元)、涨跌幅、扩展快照(扩展快照数据主体)、行情时间 HHMMSS、涨跌状态：0=正常, 1=涨停, 2=跌停、涨停价(元)、跌停价(元)等字段。不支持北交所数据。",
+          "inputParams": [
+            {
+              "code": "stocks",
+              "name": "sid 数组",
+              "type": "INT[]",
+              "required": "否",
+              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"stocks\": [1508000]}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
+            },
+            {
+              "code": "env",
+              "name": "行情数据块类型",
+              "type": "INT[]",
+              "required": "否",
+              "description": "1-ssp( 精简快照：最新价、涨跌幅）；2-esp（扩展快照：开高低收、量额、换手率、市值等）； 3-bas （五档买卖盘）；前段传参 \"env\": [1, 2, 3]"
+            }
+          ],
+          "fields": [
+            {
+              "code": "ssp",
+              "name": "精简快照",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "精简快照数据主体"
+            },
+            {
+              "code": "sts",
+              "name": "交易状态",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "1-已收盘；2-未开盘；3-集合竞价；4-等待开盘；5-交易中；6-午休；7-停牌；8-盘后交易"
+            },
+            {
+              "code": "np",
+              "name": "最新价",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "最新价 [单位：元]"
+            },
+            {
+              "code": "chg",
+              "name": "涨跌额",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "涨跌额 [单位：元]"
+            },
+            {
+              "code": "chgr",
+              "name": "涨跌幅",
+              "type": "NUMBER",
+              "required": "否",
+              "description": "涨跌幅"
+            },
+            {
+              "code": "esp",
+              "name": "扩展快照",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "扩展快照数据主体"
+            },
+            {
+              "code": "tm",
+              "name": "行情时间 HHMMSS",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "行情时间 HHMMSS"
+            },
+            {
+              "code": "zdsts",
+              "name": "涨跌状态：0=正常, 1=涨停, 2=跌停",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "涨跌状态：0=正常, 1=涨停, 2=跌停"
+            },
+            {
+              "code": "zt",
+              "name": "涨停价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "涨停价 [单位：元]"
+            },
+            {
+              "code": "dt",
+              "name": "跌停价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "跌停价 [单位：元]"
+            },
+            {
+              "code": "op",
+              "name": "开盘价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "开盘价 [单位：元]"
+            },
+            {
+              "code": "hp",
+              "name": "最高价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "最高价 [单位：元]"
+            },
+            {
+              "code": "lp",
+              "name": "最低价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "最低价 [单位：元]"
+            },
+            {
+              "code": "vol",
+              "name": "成交量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "成交量 [单位：股]"
+            },
+            {
+              "code": "amt",
+              "name": "成交额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "成交额 [单位：元]"
+            },
+            {
+              "code": "zf",
+              "name": "振幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "振幅"
+            },
+            {
+              "code": "lb",
+              "name": "量比",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "量比"
+            },
+            {
+              "code": "wb",
+              "name": "委比",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "委比"
+            },
+            {
+              "code": "tr",
+              "name": "换手率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "换手率 [单位：%]"
+            },
+            {
+              "code": "inval",
+              "name": "内盘成交量（主动卖出）",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "内盘成交量（主动卖出）"
+            },
+            {
+              "code": "outval",
+              "name": "外盘成交量（主动买入）",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "外盘成交量（主动买入）"
+            },
+            {
+              "code": "pefwd",
+              "name": "动态市盈率",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "动态市盈率"
+            },
+            {
+              "code": "mval",
+              "name": "总市值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "总市值 [单位：元]"
+            },
+            {
+              "code": "circMval",
+              "name": "流通市值",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "流通市值 [单位：元]"
+            },
+            {
+              "code": "chgr5min",
+              "name": "5 分钟涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "5 分钟涨跌幅 [单位：%]"
+            },
+            {
+              "code": "upsp5min",
+              "name": "5分钟涨速",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "5分钟涨速"
+            },
+            {
+              "code": "btv",
+              "name": "委买总量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "委买总量"
+            },
+            {
+              "code": "stv",
+              "name": "委卖总量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "委卖总量"
+            },
+            {
+              "code": "nv",
+              "name": "现手（最新一笔成交量）",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "现手（最新一笔成交量）"
+            },
+            {
+              "code": "chgr3d",
+              "name": "近 3 日涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近 3 日涨跌幅 [单位：%]"
+            },
+            {
+              "code": "chgr5d",
+              "name": "近 5 日涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近 5 日涨跌幅 [单位：%]"
+            },
+            {
+              "code": "chgr10d",
+              "name": "近 10 日涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近 10 日涨跌幅 [单位：%]"
+            },
+            {
+              "code": "chgr20d",
+              "name": "近 20 日涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近 20 日涨跌幅 [单位：%]"
+            },
+            {
+              "code": "chgrHafyear",
+              "name": "近半年涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近半年涨跌幅 [单位：%]"
+            },
+            {
+              "code": "chgrYear",
+              "name": "近1年涨跌幅",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "近1年涨跌幅 [单位：%]"
+            },
+            {
+              "code": "bas",
+              "name": "五档盘口",
+              "type": "OBJECT",
+              "required": "否",
+              "description": "五档盘口数据主体 [单位：%]"
+            },
+            {
+              "code": "bpx",
+              "name": "申买价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "5 档从高到低"
+            },
+            {
+              "code": "bval",
+              "name": "申买量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "对应 5 档"
+            },
+            {
+              "code": "spx",
+              "name": "申卖价",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "5 档从低到高"
+            },
+            {
+              "code": "sval",
+              "name": "申卖量",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "对应 5 档"
+            }
+          ]
+        }
+      }
+    },
     "cpys": {
       "categoryName": "产品要素",
       "interfaces": {
@@ -3574,6 +4094,49 @@
     "jcsj": {
       "categoryName": "基础数据",
       "interfaces": {
+        "stk_search": {
+          "name": "股票筛选",
+          "description": "股票搜索：根据关键词模糊匹配股票代码、股票简称，返回疑似匹配的股票列表；返回的股票代码可传入各属性查询工具获取具体数据；已指定具体股票时或已知股票代码时不要调用本工具。",
+          "inputParams": [
+            {
+              "code": "KEY",
+              "name": "搜索关键字",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "股票简称、拼音缩写、股票代码、模糊简称（如：茅台）"
+            }
+          ],
+          "fields": [
+            {
+              "code": "SEC_CODE",
+              "name": "股票代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "股票代码"
+            },
+            {
+              "code": "SEC_SNAME",
+              "name": "股票简称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "股票简称"
+            },
+            {
+              "code": "MKT_TYPE",
+              "name": "证券市场",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "深圳证券交易所；上海证券交易所；北京证券交易所"
+            },
+            {
+              "code": "LIST_STATUS",
+              "name": "上市状态",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "其他; 正常上市; 暂停上市; 终止上市; 发行配售期间"
+            }
+          ]
+        },
         "stk_list": {
           "name": "股票列表",
           "description": "用于查询股票列表数据，获取基础信息数据，包括股票代码、名称、上市日期、退市日期等，获取A股上市代码。支持按股票代码、股票简称、上市板块(主板；中小企业板；创业板；科创板)、上市状态、证券市场(深圳证券交易所；上海证券交易所；北京证券交易所)、市场类型(0-否;1-港股通;2-沪股通;3-深股通)筛选或查询。返回股票代码、股票简称、城市、申万行业分类三级、证券全称、英文名称、证券拼音简称、上市板块(主板；中小企业板；创业板；科创板)、证券市场(深圳证券交易所；上海证券交易所；北京证券交易所)、交易货币等字段。",
@@ -25599,521 +26162,6 @@
     "reitssshq": {
       "categoryName": "实时行情",
       "interfaces": {
-        "tradereord": {
-          "name": "成交明细",
-          "description": "用于查询成交明细数据，获取成交记录，返回该证券当日最新的 20 笔成交，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID筛选或查询。返回成交序号(依次递增)、成交时间(HHMMSS)、成交价、成交量(股)、成交额(元)、方向、交易日期(YYYMMDD)等字段。",
-          "inputParams": [
-            {
-              "code": "sid",
-              "name": "证券唯一 ID",
-              "type": "INT",
-              "required": "否",
-              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"sid\": 1508000}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
-            }
-          ],
-          "fields": [
-            {
-              "code": "seq",
-              "name": "成交序号",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "依次递增"
-            },
-            {
-              "code": "tm",
-              "name": "成交时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "HHMMSS"
-            },
-            {
-              "code": "px",
-              "name": "成交价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "成交价"
-            },
-            {
-              "code": "vol",
-              "name": "成交量",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "成交量 [单位：股]"
-            },
-            {
-              "code": "amt",
-              "name": "成交额",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "成交额 [单位：元]"
-            },
-            {
-              "code": "dir",
-              "name": "方向",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "方向：0=平盘, 1=主动卖出（内盘）, 2=主动买入（外盘）"
-            },
-            {
-              "code": "td",
-              "name": "交易日期",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "YYYMMDD"
-            }
-          ]
-        },
-        "rtmin": {
-          "name": "分时线",
-          "description": "用于查询分时线数据，获取当日分时走势数据，每 1 分钟一个采样点，共 0-240 个点，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID筛选或查询。返回分时下标(每日从 0 开始递增，起始下标 [0-240])、成交时间(HHMMSS)、当前价、该分钟成交量(股)、该分钟成交额(元)、截至该分钟的均价(元)等字段。",
-          "inputParams": [
-            {
-              "code": "sid",
-              "name": "证券唯一 ID",
-              "type": "INT",
-              "required": "否",
-              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"sid\": 1508000}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
-            }
-          ],
-          "fields": [
-            {
-              "code": "idx",
-              "name": "分时下标",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "每日从 0 开始递增，起始下标 [0-240]"
-            },
-            {
-              "code": "tm",
-              "name": "成交时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "HHMMSS"
-            },
-            {
-              "code": "px",
-              "name": "当前价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "当前价"
-            },
-            {
-              "code": "vol",
-              "name": "该分钟成交量",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "该分钟成交量 [单位：股]"
-            },
-            {
-              "code": "amt",
-              "name": "该分钟成交额",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "该分钟成交额 [单位：元]"
-            },
-            {
-              "code": "ave",
-              "name": "截至该分钟的均价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "截至该分钟的均价 [单位：元]"
-            }
-          ]
-        },
-        "quot-kline": {
-          "name": "K线行情",
-          "description": "用于查询K线行情数据，获取分钟/日 / 周 / 月 K 线数据。当日 K 线在盘中实时更新，最新一根会随行情推进不断刷新，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按证券唯一 ID、K 线类型、起始日期(必填项，起始日期yyyyMMdd)筛选或查询。返回日期(YYYYMMDD)、成交时间(日/周/月交易日,1分钟分时返回带分时时间)、昨收价(元)、开盘价(元)、最高价(元)、最低价(元)、收盘价(元)、成交量(股)、成交额(元)等字段。",
-          "inputParams": [
-            {
-              "code": "securityId",
-              "name": "证券唯一 ID",
-              "type": "INT",
-              "required": "否",
-              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所，则组装为1508011；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
-            },
-            {
-              "code": "type",
-              "name": "K 线类型",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "必填项；1minkline-1分钟；day-日 K（不复权）;week-周 K（不复权）;month-月 K（不复权）"
-            },
-            {
-              "code": "range.begin",
-              "name": "起始日期",
-              "type": "INT",
-              "required": "否",
-              "description": "必填项，起始日期yyyyMMdd"
-            }
-          ],
-          "fields": [
-            {
-              "code": "nIndex",
-              "name": "日期",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "YYYYMMDD"
-            },
-            {
-              "code": "nTime",
-              "name": "成交时间",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "日/周/月交易日,1分钟分时返回带分时时间"
-            },
-            {
-              "code": "nPreClosePx",
-              "name": "昨收价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "昨收价 [单位：元]"
-            },
-            {
-              "code": "nOpenPx",
-              "name": "开盘价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "开盘价 [单位：元]"
-            },
-            {
-              "code": "nHighPx",
-              "name": "最高价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "最高价 [单位：元]"
-            },
-            {
-              "code": "nLowPx",
-              "name": "最低价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "最低价 [单位：元]"
-            },
-            {
-              "code": "nLastPx",
-              "name": "收盘价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "收盘价 [单位：元]"
-            },
-            {
-              "code": "llVolume",
-              "name": "成交量",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "成交量 [单位：股]"
-            },
-            {
-              "code": "llValue",
-              "name": "成交额",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "成交额 [单位：元]"
-            }
-          ]
-        },
-        "hqs": {
-          "name": "行情快照",
-          "description": "用于查询行情快照数据，获取证券代码实时的最新价、涨跌幅、五档盘口、交易明细等数据，LV1行情，该行情接口不支持fields、sort、mode属性设置。支持按sid 数组、行情数据块类型筛选或查询。返回精简快照(精简快照数据主体)、交易状态、最新价(元)、涨跌额(元)、涨跌幅、扩展快照(扩展快照数据主体)、行情时间 HHMMSS、涨跌状态：0=正常, 1=涨停, 2=跌停、涨停价(元)、跌停价(元)等字段。",
-          "inputParams": [
-            {
-              "code": "stocks",
-              "name": "sid 数组",
-              "type": "INT[]",
-              "required": "否",
-              "description": "必填项；由交易市场+市场代码组成，上交所：1；深交所：2，如查询Reits基金代码508011，其对应的市场为上交所;则组装为1508011，前端传参{ \"stocks\": [1508000]}；市场编码映射规则：上交所 = 1，深交所 = 2；查询股票、场内基金与指数行情时，原始代码 6 开头（60、68、69）、50、51、52、53、56、000 开头归属上交所，前缀拼接 1；00、30、15、16、399 开头归属深交所，前缀拼接 2；"
-            },
-            {
-              "code": "env",
-              "name": "行情数据块类型",
-              "type": "INT[]",
-              "required": "否",
-              "description": "1-ssp( 精简快照：最新价、涨跌幅）；2-esp（扩展快照：开高低收、量额、换手率、市值等）； 3-bas （五档买卖盘）；前段传参 \"env\": [1, 2, 3]"
-            }
-          ],
-          "fields": [
-            {
-              "code": "ssp",
-              "name": "精简快照",
-              "type": "OBJECT",
-              "required": "否",
-              "description": "精简快照数据主体"
-            },
-            {
-              "code": "sts",
-              "name": "交易状态",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "1-已收盘；2-未开盘；3-集合竞价；4-等待开盘；5-交易中；6-午休；7-停牌；8-盘后交易"
-            },
-            {
-              "code": "np",
-              "name": "最新价",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "最新价 [单位：元]"
-            },
-            {
-              "code": "chg",
-              "name": "涨跌额",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "涨跌额 [单位：元]"
-            },
-            {
-              "code": "chgr",
-              "name": "涨跌幅",
-              "type": "NUMBER",
-              "required": "否",
-              "description": "涨跌幅"
-            },
-            {
-              "code": "esp",
-              "name": "扩展快照",
-              "type": "OBJECT",
-              "required": "否",
-              "description": "扩展快照数据主体"
-            },
-            {
-              "code": "tm",
-              "name": "行情时间 HHMMSS",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "行情时间 HHMMSS"
-            },
-            {
-              "code": "zdsts",
-              "name": "涨跌状态：0=正常, 1=涨停, 2=跌停",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "涨跌状态：0=正常, 1=涨停, 2=跌停"
-            },
-            {
-              "code": "zt",
-              "name": "涨停价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "涨停价 [单位：元]"
-            },
-            {
-              "code": "dt",
-              "name": "跌停价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "跌停价 [单位：元]"
-            },
-            {
-              "code": "op",
-              "name": "开盘价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "开盘价 [单位：元]"
-            },
-            {
-              "code": "hp",
-              "name": "最高价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "最高价 [单位：元]"
-            },
-            {
-              "code": "lp",
-              "name": "最低价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "最低价 [单位：元]"
-            },
-            {
-              "code": "vol",
-              "name": "成交量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "成交量 [单位：股]"
-            },
-            {
-              "code": "amt",
-              "name": "成交额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "成交额 [单位：元]"
-            },
-            {
-              "code": "zf",
-              "name": "振幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "振幅"
-            },
-            {
-              "code": "lb",
-              "name": "量比",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "量比"
-            },
-            {
-              "code": "wb",
-              "name": "委比",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "委比"
-            },
-            {
-              "code": "tr",
-              "name": "换手率",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "换手率 [单位：%]"
-            },
-            {
-              "code": "inval",
-              "name": "内盘成交量（主动卖出）",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "内盘成交量（主动卖出）"
-            },
-            {
-              "code": "outval",
-              "name": "外盘成交量（主动买入）",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "外盘成交量（主动买入）"
-            },
-            {
-              "code": "pefwd",
-              "name": "动态市盈率",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "动态市盈率"
-            },
-            {
-              "code": "mval",
-              "name": "总市值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "总市值 [单位：元]"
-            },
-            {
-              "code": "circMval",
-              "name": "流通市值",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "流通市值 [单位：元]"
-            },
-            {
-              "code": "chgr5min",
-              "name": "5 分钟涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "5 分钟涨跌幅 [单位：%]"
-            },
-            {
-              "code": "upsp5min",
-              "name": "5分钟涨速",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "5分钟涨速"
-            },
-            {
-              "code": "btv",
-              "name": "委买总量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "委买总量"
-            },
-            {
-              "code": "stv",
-              "name": "委卖总量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "委卖总量"
-            },
-            {
-              "code": "nv",
-              "name": "现手（最新一笔成交量）",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "现手（最新一笔成交量）"
-            },
-            {
-              "code": "chgr3d",
-              "name": "近 3 日涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近 3 日涨跌幅 [单位：%]"
-            },
-            {
-              "code": "chgr5d",
-              "name": "近 5 日涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近 5 日涨跌幅 [单位：%]"
-            },
-            {
-              "code": "chgr10d",
-              "name": "近 10 日涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近 10 日涨跌幅 [单位：%]"
-            },
-            {
-              "code": "chgr20d",
-              "name": "近 20 日涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近 20 日涨跌幅 [单位：%]"
-            },
-            {
-              "code": "chgrHafyear",
-              "name": "近半年涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近半年涨跌幅 [单位：%]"
-            },
-            {
-              "code": "chgrYear",
-              "name": "近1年涨跌幅",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "近1年涨跌幅 [单位：%]"
-            },
-            {
-              "code": "bas",
-              "name": "五档盘口",
-              "type": "OBJECT",
-              "required": "否",
-              "description": "五档盘口数据主体 [单位：%]"
-            },
-            {
-              "code": "bpx",
-              "name": "申买价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "5 档从高到低"
-            },
-            {
-              "code": "bval",
-              "name": "申买量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "对应 5 档"
-            },
-            {
-              "code": "spx",
-              "name": "申卖价",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "5 档从低到高"
-            },
-            {
-              "code": "sval",
-              "name": "申卖量",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "对应 5 档"
-            }
-          ]
-        },
         "reitsRankList": {
           "name": "reits基金排名列表",
           "description": "用于查询reits基金排名列表数据，全市场 REITs 基金排名列表，支持按涨跌幅、成交额等维度排序，LV1行情，该行情接口不支持fields、mode属性设置。支持分页获取对应数据。返回证券唯一 ID、reits代码、reits名称、最新价(元)、涨跌幅(%)、涨跌额(元)、昨收价(元)、溢价率(%)、基金规模(元)、成交额(元)等字段。",
@@ -28744,6 +28792,105 @@
             }
           ]
         },
+        "fund_hold_meet": {
+          "name": "持有人大会",
+          "description": "用于查询持有人大会数据。支持按基金代码、首次公告日期、开始日期(取DECLAREDATE字段)、截止日期(取DECLAREDATE字段)筛选或查询。返回基金代码、首次公告日期、更新日期、大会类型(1-年度大会;2-一般大会;3-临时大会)、年度、会议届次、召开方式、召开地点、大会议题、决议结果等字段。",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "首次公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "首次公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "CHANGEDATE",
+              "name": "更新日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）；默认排序；"
+            },
+            {
+              "code": "MTG_CLS",
+              "name": "大会类型",
+              "type": "INT",
+              "required": "否",
+              "description": "1-年度大会;2-一般大会;3-临时大会"
+            },
+            {
+              "code": "MTG_YEAR",
+              "name": "年度",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "AUDIT_TERM",
+              "name": "会议届次",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "会议届次"
+            },
+            {
+              "code": "HOLD_CLS",
+              "name": "召开方式",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;1-现场方式;2-通讯方式;3-现场与非现场结合;9-其他;"
+            },
+            {
+              "code": "HOLD_ADDR",
+              "name": "召开地点",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "召开地点"
+            },
+            {
+              "code": "CONTENT",
+              "name": "大会议题",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "大会议题"
+            }
+          ]
+        },
         "fund_hold_struct": {
           "name": "持仓结构",
           "description": "用于查询持仓结构数据。支持按基金代码、公布日期、开始日期(取DECLAREDATE字段)、截止日期(取DECLAREDATE字段)、截止日期、信息来源筛选或查询。返回基金代码、截止日期、信息来源、公布日期、持有人户数、户均持有份额、机构持有份额、机构持有比例(%)、个人持有份额、个人持有比例(%)等字段。",
@@ -28941,6 +29088,91 @@
             }
           ]
         },
+        "fund_init_hold": {
+          "name": "发起人持仓",
+          "description": "用于查询发起人持仓数据。支持按基金代码、截止日期、开始日期(取ENDDATE字段)、截止日期(取ENDDATE字段)筛选或查询。返回基金代码、截止日期、发起人序号、发起人代码、发起人名称、发起人持有未流通份额、发起人持有总份额等字段。",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基金代码"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_ENDDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
+            },
+            {
+              "code": "ED_ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序;格式（YYYY-MM-dd）；默认排序；"
+            },
+            {
+              "code": "ORGR_SEQ",
+              "name": "发起人序号",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "ORGR_CODE",
+              "name": "发起人代码",
+              "type": "INT",
+              "required": "否",
+              "description": "支持排序;"
+            },
+            {
+              "code": "ORGR_NAME",
+              "name": "发起人名称",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "发起人名称"
+            },
+            {
+              "code": "ORGR_HLD_NTRD_VOL",
+              "name": "发起人持有未流通份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "发起人持有未流通份额 [单位：份]"
+            },
+            {
+              "code": "ORGR_HLD_VOL",
+              "name": "发起人持有总份额",
+              "type": "NUMERIC",
+              "required": "否",
+              "description": "发起人持有总份额 [单位：份]"
+            }
+          ]
+        },
         "fund_main_hold": {
           "name": "主要持有人",
           "description": "用于查询主要持有人数据。支持按基金代码、公布日期、开始日期(取DECLAREDATE字段)、截止日期(取DECLAREDATE字段)、截止日期、持有人类别(0-其它;1-机构;2-个人)筛选或查询。返回基金代码、截止日期、持有人名次、公布日期、信息来源、持有人名称、持有人代码、持有人类别(0-其它;1-机构;2-个人)、持有份额、持有比例(%)等字段。",
@@ -29072,190 +29304,6 @@
               "type": "NUMERIC",
               "required": "否",
               "description": "持有比例增减 [单位：%]"
-            }
-          ]
-        },
-        "fund_init_hold": {
-          "name": "发起人持仓",
-          "description": "用于查询发起人持仓数据。支持按基金代码、截止日期、开始日期(取ENDDATE字段)、截止日期(取ENDDATE字段)筛选或查询。返回基金代码、截止日期、发起人序号、发起人代码、发起人名称、发起人持有未流通份额、发起人持有总份额等字段。",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_ENDDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
-            },
-            {
-              "code": "ED_ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取ENDDATE字段"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）；默认排序；"
-            },
-            {
-              "code": "ORGR_SEQ",
-              "name": "发起人序号",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "ORGR_CODE",
-              "name": "发起人代码",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "ORGR_NAME",
-              "name": "发起人名称",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "发起人名称"
-            },
-            {
-              "code": "ORGR_HLD_NTRD_VOL",
-              "name": "发起人持有未流通份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "发起人持有未流通份额 [单位：份]"
-            },
-            {
-              "code": "ORGR_HLD_VOL",
-              "name": "发起人持有总份额",
-              "type": "NUMERIC",
-              "required": "否",
-              "description": "发起人持有总份额 [单位：份]"
-            }
-          ]
-        },
-        "fund_hold_meet": {
-          "name": "持有人大会",
-          "description": "用于查询持有人大会数据。支持按基金代码、首次公告日期、开始日期(取DECLAREDATE字段)、截止日期(取DECLAREDATE字段)筛选或查询。返回基金代码、首次公告日期、更新日期、大会类型(1-年度大会;2-一般大会;3-临时大会)、年度、会议届次、召开方式、召开地点、大会议题、决议结果等字段。",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基金代码"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "首次公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）,取DECLAREDATE字段"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "首次公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "CHANGEDATE",
-              "name": "更新日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序;格式（YYYY-MM-dd）；默认排序；"
-            },
-            {
-              "code": "MTG_CLS",
-              "name": "大会类型",
-              "type": "INT",
-              "required": "否",
-              "description": "1-年度大会;2-一般大会;3-临时大会"
-            },
-            {
-              "code": "MTG_YEAR",
-              "name": "年度",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;"
-            },
-            {
-              "code": "AUDIT_TERM",
-              "name": "会议届次",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "会议届次"
-            },
-            {
-              "code": "HOLD_CLS",
-              "name": "召开方式",
-              "type": "INT",
-              "required": "否",
-              "description": "支持排序;1-现场方式;2-通讯方式;3-现场与非现场结合;9-其他;"
-            },
-            {
-              "code": "HOLD_ADDR",
-              "name": "召开地点",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "召开地点"
-            },
-            {
-              "code": "CONTENT",
-              "name": "大会议题",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "大会议题"
             }
           ]
         },
@@ -34214,98 +34262,6 @@
     "gmjjggzx": {
       "categoryName": "公告资讯",
       "interfaces": {
-        "fund_ann": {
-          "name": "基金公告",
-          "description": "用于查询基金公告数据，记录2002-03-29以来的数据。支持按基金代码(支持多只基金，逗号分隔)、关键词分类、公告日期、开始日期(-取DECLAREDATE)、截止日期(-取DECLAREDATE)筛选或查询。返回基金代码(支持多只基金，逗号分隔)、公告日期、标题、业绩报告日期、公告分类、附件路径(需与客服确认附件域名前缀组合访问)、关键词分类等字段。",
-          "inputParams": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持多只基金，逗号分隔"
-            },
-            {
-              "code": "KEY_CAT",
-              "name": "关键词分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "SD_DECLAREDATE",
-              "name": "开始日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
-            },
-            {
-              "code": "ED_DECLAREDATE",
-              "name": "截止日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
-            }
-          ],
-          "fields": [
-            {
-              "code": "FUND_CODE",
-              "name": "基金代码",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；支持多只基金，逗号分隔"
-            },
-            {
-              "code": "DECLAREDATE",
-              "name": "公告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）；默认排序；"
-            },
-            {
-              "code": "TITLE",
-              "name": "标题",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "标题"
-            },
-            {
-              "code": "ENDDATE",
-              "name": "业绩报告日期",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "支持排序；格式（YYYY-MM-dd）"
-            },
-            {
-              "code": "CLS_NAME",
-              "name": "公告分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "公告分类"
-            },
-            {
-              "code": "ACCE_ROUTE",
-              "name": "附件路径",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "需与客服确认附件域名前缀组合访问"
-            },
-            {
-              "code": "KEY_CAT",
-              "name": "关键词分类",
-              "type": "VARCHAR",
-              "required": "否",
-              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询"
-            }
-          ]
-        },
         "fund_sec_notice": {
           "name": "基金特别提示",
           "description": "用于查询基金特别提示数据，获取基金的交易提示信息，例如：停牌提示、基金发行上市提示、基金权益登记提示、基金分红派息提示、基金除权除息提示等，记录2001年09月11日以来的数据。支持按基金代码(支持多只基金，逗号分隔)、提示日期、开始日期(取HINT_DATE字段)、截止日期(取HINT_DATE字段)筛选或查询。返回基金代码(支持多只基金，逗号分隔)、提示日期、序号、公布日期、特别提示内容、停牌时间(格式（YYYY-MM-dd hh:mm:ss）)、复牌时间(格式（YYYY-MM-dd hh:mm:ss）)、停牌期限、提示类型名称、停牌类属名称等字段。",
@@ -34423,6 +34379,98 @@
               "type": "VARCHAR",
               "required": "否",
               "description": "涨跌幅限制类型"
+            }
+          ]
+        },
+        "fund_ann": {
+          "name": "基金公告",
+          "description": "用于查询基金公告数据，记录2002-03-29以来的数据。支持按基金代码(支持多只基金，逗号分隔)、关键词分类、公告日期、开始日期(-取DECLAREDATE)、截止日期(-取DECLAREDATE)筛选或查询。返回基金代码(支持多只基金，逗号分隔)、公告日期、标题、业绩报告日期、公告分类、附件路径(需与客服确认附件域名前缀组合访问)、关键词分类等字段。",
+          "inputParams": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持多只基金，逗号分隔"
+            },
+            {
+              "code": "KEY_CAT",
+              "name": "关键词分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "SD_DECLAREDATE",
+              "name": "开始日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
+            },
+            {
+              "code": "ED_DECLAREDATE",
+              "name": "截止日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "格式（YYYY-MM-dd）-取DECLAREDATE"
+            }
+          ],
+          "fields": [
+            {
+              "code": "FUND_CODE",
+              "name": "基金代码",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；支持多只基金，逗号分隔"
+            },
+            {
+              "code": "DECLAREDATE",
+              "name": "公告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）；默认排序；"
+            },
+            {
+              "code": "TITLE",
+              "name": "标题",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "标题"
+            },
+            {
+              "code": "ENDDATE",
+              "name": "业绩报告日期",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "支持排序；格式（YYYY-MM-dd）"
+            },
+            {
+              "code": "CLS_NAME",
+              "name": "公告分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "公告分类"
+            },
+            {
+              "code": "ACCE_ROUTE",
+              "name": "附件路径",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "需与客服确认附件域名前缀组合访问"
+            },
+            {
+              "code": "KEY_CAT",
+              "name": "关键词分类",
+              "type": "VARCHAR",
+              "required": "否",
+              "description": "基于标题关键词动态识别的附加标签，独立于公告分类。可通过'机构调研','评估报告'查询"
             }
           ]
         },
