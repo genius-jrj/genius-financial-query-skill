@@ -1,3 +1,24 @@
+---
+name: genius-financial-query
+display_name: Genius 金融数据查询
+display_name_en: Genius Financial Query
+description: 查询股票、基金、港股、期货、债券、期权、指数及宏观经济等金融数据。当用户询问行情、财报、净值、分红、资金流向、宏观指标，或需要调用 Genius 金融数据 API 时使用。
+description_zh: 覆盖股票、基金、港股、期货、债券、期权、指数与宏观经济等领域的全量金融数据接口，支持自然语言找接口、字段中英映射与 API 直接调用。
+description_en: A professional financial data query skill covering stocks, funds, HK stocks, futures, bonds, options, indices and macroeconomics, with interface discovery, field mapping and direct API calls.
+examples_zh:
+  - "查询贵州茅台（600519）最近一年的日线行情"
+  - "查看华安张江产业园 REIT（508000）的实时行情快照"
+  - "获取宁德时代最新一期资产负债表的总资产和净资产"
+  - "查询易方达蓝筹精选基金的单位净值历史"
+examples_en:
+  - "Query the daily quotes of Kweichow Moutai (600519) over the past year"
+  - "Show the real-time quote snapshot of REIT 508000"
+  - "Get total assets and net assets from the latest balance sheet of CATL"
+  - "Query the historical NAV of E Fund Blue Chip Selected Fund"
+version: 7.4.0
+author: "Genius"
+---
+
 # Genius Financial Query Skill
 
 ## 技能说明
@@ -6,7 +27,7 @@
 
 ### 核心功能
 
-1. **找接口** - 236 个金融数据接口，覆盖 47 个分类
+1. **找接口** - 覆盖股票、基金、期货、债券、期权、指数、宏观等领域的全量金融数据接口（完整清单见 @references/field_mapping.json）
 2. **调用 API** - 直接调用指定的 HTTP API
 3. **字段映射** - 自动将字段代码映射为中文
 
@@ -14,11 +35,11 @@
 
 ```
 genius-financial-query/
-├── SKILL.md                   # 主文件
+├── SKILL.md                   # 技能定义（YAML frontmatter + 指令正文）
 ├── scripts/
-│   └── handler.py            # 核心处理逻辑
+│   └── handler.py             # 核心处理逻辑（API 调用、字段映射）
 └── references/
-    └── field_mapping.json    # 字段映射表（236 接口，3534 字段）
+    └── field_mapping.json     # 字段映射表（接口/字段/分类的唯一数据源）
 ```
 
 ## 配置项
@@ -41,7 +62,7 @@ genius-financial-query/
 ```
 
 **获取 Token 步骤**：
-1. 访问 http://science.z3cloud.com.cn/api-genius
+1. 访问 http://science.z3cloud.com.cn
 2. 注册账号并登录
 3. 进入个人中心创建 API Token
 4. 复制 Token 并配置
@@ -200,7 +221,7 @@ result = handler.execute(
 | 观察指标 (hgzb) | 利率指标、宏观指标、热度指标、黄金指标 | 46 |
 | 数据广场 (hgfx) | 市场估值、机构分析、ETF分析、宏观统计 | 6 |
 
-**总计**: 236 个接口，3534 个字段
+> 注：上表仅为分类概览，接口数量会随文档更新变化，实时准确的接口/字段清单以 @references/field_mapping.json 为准（见其中 `totalInterfaces`、`totalOutputFields` 字段）。
 
 ### 常用接口
 
@@ -215,7 +236,7 @@ result = handler.execute(
 | etf_info | ETF信息 | 获取ETF基础信息 |
 | fut_cont_info | 期货合约信息 | 获取期货合约信息 |
 
-完整接口信息见 `references/field_mapping.json`。
+完整接口信息见 @references/field_mapping.json（AI 执行技能时读取该文件作为上下文，用于找接口、确认输入/输出参数）。
 
 ## 返回格式
 
