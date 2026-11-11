@@ -1,21 +1,19 @@
 ---
 name: genius-financial-query
-display_name: Genius 金融数据查询
+display_name: 巨灵财经数据查询
 display_name_en: Genius Financial Query
 description: 查询股票、基金、港股、期货、债券、期权、指数及宏观经济等金融数据。当用户询问行情、财报、净值、分红、资金流向、宏观指标，或需要调用 Genius 金融数据 API 时使用。
-description_zh: 覆盖股票、基金、港股、期货、债券、期权、指数与宏观经济等领域的全量金融数据接口，支持自然语言找接口、字段中英映射与 API 直接调用。
-description_en: A professional financial data query skill covering stocks, funds, HK stocks, futures, bonds, options, indices and macroeconomics, with interface discovery, field mapping and direct API calls.
+description_zh: 基于巨灵财经数据库，支持通过自然语言检索股票、基金、港股、期货、债券、期权、资讯、指数与宏观经济等领域的金融数据。
+description_en: Based on the Juling financial database, enabling natural-language retrieval of financial data interfaces across stocks, funds, HK stocks, futures, bonds, options, news, indices and macroeconomics.
 examples_zh:
   - "查询贵州茅台（600519）最近一年的日线行情"
   - "查看华安张江产业园 REIT（508000）的实时行情快照"
   - "获取宁德时代最新一期资产负债表的总资产和净资产"
-  - "查询易方达蓝筹精选基金的单位净值历史"
 examples_en:
   - "Query the daily quotes of Kweichow Moutai (600519) over the past year"
   - "Show the real-time quote snapshot of REIT 508000"
   - "Get total assets and net assets from the latest balance sheet of CATL"
-  - "Query the historical NAV of E Fund Blue Chip Selected Fund"
-version: 7.4.0
+version: 1.0.0
 author: "Genius"
 ---
 
@@ -46,23 +44,16 @@ genius-financial-query/
 
 ### 必需配置
 
-在 `~/.openclaw/openclaw.json` 中配置：
+技能运行仅需一个 API Token，注入方式取决于宿主平台：
 
-```json
-{
-  "skills": {
-    "entries": {
-      "genius-financial-query": {
-        "enabled": true,
-        "apiKey": "your-genius-api-token"
-      }
-    }
-  }
-}
-```
+- **环境变量（通用，推荐）**：设置 `GENIUS_API_TOKEN`，代码中通过 `os.environ.get('GENIUS_API_TOKEN')` 读取
+- **平台配置**：由宿主平台注入，如 OpenClaw 在 `~/.openclaw/openclaw.json` 的 `skills.entries.genius-financial-query.apiKey` 中配置
+- **代码传参**：直接传入 `create_handler({'apiToken': 'your-token'})`
+
+> 注意：不要把 Token 硬编码到脚本或提交到代码仓库。
 
 **获取 Token 步骤**：
-1. 访问 http://science.z3cloud.com.cn
+1. 访问 https://science.z3cloud.com.cn/api-genius
 2. 注册账号并登录
 3. 进入个人中心创建 API Token
 4. 复制 Token 并配置
@@ -100,7 +91,7 @@ result = handler.execute(
 | sort | str | 否 | 排序（字段名,方向） | `"LIST_DATE,DESC"` |
 | mode | int | 否 | 返回模式（1-数组格式，2-键值对格式，默认1） | `1` 或 `2` |
 | pageNum | int | 否 | 页码（默认1） | `1` |
-| pageSize | int | 否 | 每页条数（默认1000） | `10` |
+| pageSize | int | 否 | 每页条数（最多 1000；分页查询最多可获取前 20000 条，建议增加筛选条件缩小范围） | `100` |
 
 ### 返回模式说明
 
@@ -116,10 +107,11 @@ result = handler.execute(
             ["000001", "1991-04-03", 1.409681]
         ],
         "kvData": null,
-        "total": 26308753,
-        "size": 1,
+        "total": 2349,
+        "size": 100,
         "current": 1,
-        "pages": 26308753
+        "pages": 24,
+        "hasMore": true
     }
 }
 ```
@@ -140,10 +132,11 @@ result = handler.execute(
                 "EX_FACTOR": 1.409681
             }
         ],
-        "total": 26308753,
-        "size": 1,
+        "total": 2349,
+        "size": 100,
         "current": 1,
-        "pages": 26308753
+        "pages": 24,
+        "hasMore": true
     }
 }
 ```
@@ -205,21 +198,19 @@ result = handler.execute(
 
 | 一级分类 | 子分类 | 接口数 |
 |---------|--------|--------|
-| 股票数据 (gpsj) | 基础数据、行情数据、财务数据、股本股东、特色数据、融资融券、资金流向、打板专题 | 53 |
+| 实时行情 (sshq) | - | 4 |
+| 股票数据 (gpsj) | 基础数据、行情数据、财务数据、股本股东、特色数据、融资融券、资金流向、打板专题 | 54 |
 | 港股数据 (ggsj) | 基础数据、行情数据、财务数据 | 12 |
 | 公募基金 (gmjj) | 基本资料、人员信息、相关机构、发行送配、申购赎回、持有人与份额变动、资产配置、交易行情、财务数据、公告资讯 | 37 |
-| ETF 专题 (etfzt) | - | 5 |
+| ETF专题 (etfzt) | - | 5 |
 | 指数专题 (zszt) | 基础数据、行情数据、申万指数、衍生统计 | 12 |
 | 债券专题 (zqzt) | - | 11 |
 | 期货数据 (qhsj) | - | 5 |
 | 现货数据 (xhsj) | - | 2 |
 | 期权数据 (qqsj) | - | 2 |
-| 宏观经济 (hgjj) | 国内宏观、国际宏观 | 9 |
+| 宏观经济 (hgjj) | 国内宏观（热度指标、利率数据、国民经济、价格指数、金融信息、景气度）、国际宏观（美国利率） | 58 |
 | 资讯专题 (zxzt) | 公司公告、互动易、新闻报刊、研究报告、自有资讯 | 9 |
-| 量化因子 (lhyz) | Barra 风险模型（CNE5/CNE6） | 10 |
-| reits 基金 (reits) | 产品要素、财务数据、底层数据、实时行情 | 29 |
-| 观察指标 (hgzb) | 利率指标、宏观指标、热度指标、黄金指标 | 46 |
-| 数据广场 (hgfx) | 市场估值、机构分析、ETF分析、宏观统计 | 6 |
+| reits基金 (reits) | 产品要素、财务数据、底层数据、实时行情 | 25 |
 
 > 注：上表仅为分类概览，接口数量会随文档更新变化，实时准确的接口/字段清单以 @references/field_mapping.json 为准（见其中 `totalInterfaces`、`totalOutputFields` 字段）。
 
@@ -252,10 +243,11 @@ result = handler.execute(
             ["000001", "1991-04-03", 1.409681]
         ],
         "kvData": null,
-        "total": 26308753,
-        "size": 1,
+        "total": 2349,
+        "size": 100,
         "current": 1,
-        "pages": 26308753
+        "pages": 24,
+        "hasMore": true
     }
 }
 ```
@@ -269,10 +261,13 @@ result = handler.execute(
 | data.fields | array | 字段名列表（mode=1时有效） |
 | data.items | array | 数据数组（mode=1时为二维数组） |
 | data.kvData | array | 键值对数据（mode=2时有效） |
-| data.total | int | 总记录数 |
-| data.size | int | 当前页大小 |
-| data.current | int | 当前页码 |
-| data.pages | int | 总页数 |
+| data.total | int | 估算记录总数，依赖缓存，可能与实时结果存在偏差，不建议用于分页判断 |
+| data.size | int | 当前页码的记录数 |
+| data.current | int | 所属页码 |
+| data.pages | int | 估算总页数，依赖缓存，可能与实时结果存在偏差，不建议用于分页判断 |
+| data.hasMore | boolean | 是否还有下一页，分页查询请优先以此字段为准 |
+
+> 分页建议：翻页终止条件以 `hasMore` 为准（`true` 表示还有下一页，可将 `pageNum` 加 1 继续查询）；`total`、`pages` 为缓存估算值，仅供参考，不要用于分页判断。
 
 ## 错误处理
 
