@@ -183,7 +183,8 @@ class FinancialDataHandler:
             'total': data.get('total', 0),
             'current': data.get('current', 1),
             'pages': data.get('pages', 0),
-            'size': data.get('size', 0)
+            'size': data.get('size', 0),
+            'hasMore': data.get('hasMore', False)
         }
     
     def _get_field_name_map(self, apiName: str) -> Dict[str, str]:
