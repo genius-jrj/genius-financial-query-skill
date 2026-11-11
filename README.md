@@ -4,9 +4,21 @@
 
 ## 维护约定
 
+- 数据更新只需一条命令：`python update_field_mapping.py`
+  - 脚本直连巨灵 API 管理库（`127.0.0.1:10151/api_admin`，需本机可达该 MySQL），一次生成两份产物：
+    - `docs/接口说明/`：各分类接口文档 Markdown（取代原外部 Java 项目 api-doc-generator + 手工拷贝）
+    - `references/field_mapping.json`：v4.1.0 结构（分类层级直接取自数据库 parent_id 真实树，字段含 label/sortable）
+  - 生成后建议跑 `python tests/check_docs.py` 与 `python tests/test_handler.py` 校验一致性
 - 每次数据变化在本文件【更新日志】追加一条记录
+- 上架/打包技能：执行 `python package_skill.py`，白名单打包生成上级目录的 `genius-financial-query.zip`（只含 SKILL.md、PRIVACY.md、requirements.txt、scripts/*.py、references/field_mapping.json；自动排除 update_field_mapping.py 的数据库凭据、docs/、tests/、README.md）
 
 ## 更新日志
+
+### v7.5.0 (2026-11-11)
+- 生成管线集成：`update_field_mapping.py` 重写为直连数据库，一条命令同时生成接口说明文档与 field_mapping.json，不再依赖外部 Java 项目（api-doc-generator）和手工拷贝
+- 分类层级改由数据库 `api_category.parent_id` 真实树构建，移除维护脚本 `scripts/build_hierarchy.py`（硬编码层级已并入）
+- 字段中文名解析改为直接读取数据库参数 JSON，修复旧正则丢失 `VARCHAR(MAX)` 等带括号类型行的问题（输出字段 3534 → 3587，+53）
+- 当前数据：236 接口 / 1012 输入参数 / 3587 输出字段 / 56 分类节点
 
 ### v7.4.0 (2026-11-09)
 - 接口总数：236 个（-5）
