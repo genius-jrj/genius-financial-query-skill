@@ -2,16 +2,6 @@
 
 技能定义见 [SKILL.md](SKILL.md)，接口/字段/分类的实时清单以 [references/field_mapping.json](references/field_mapping.json) 为唯一数据源。
 
-## 维护约定
-
-- 数据更新只需一条命令：`python update_field_mapping.py`
-  - 脚本直连巨灵 API 管理库（`127.0.0.1:10151/api_admin`，需本机可达该 MySQL），一次生成两份产物：
-    - `docs/接口说明/`：各分类接口文档 Markdown（取代原外部 Java 项目 api-doc-generator + 手工拷贝）
-    - `references/field_mapping.json`：v4.1.0 结构（分类层级直接取自数据库 parent_id 真实树，字段含 label/sortable）
-  - 生成后建议跑 `python tests/check_docs.py` 与 `python tests/test_handler.py` 校验一致性
-- 每次数据变化在本文件【更新日志】追加一条记录
-- 上架/打包技能：执行 `python package_skill.py`，白名单打包生成上级目录的 `genius-financial-query.zip`（只含 SKILL.md、PRIVACY.md、requirements.txt、scripts/*.py、references/field_mapping.json；自动排除 update_field_mapping.py 的数据库凭据、docs/、tests/、README.md）
-
 ## 更新日志
 
 ### v7.5.0 (2026-11-11)
